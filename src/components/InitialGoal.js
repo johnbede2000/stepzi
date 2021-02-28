@@ -1,13 +1,9 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 
-const InitialGoal = ({ next }) => {
+const InitialGoal = () => {
   return (
     <div>
-      <p>first page</p>
-      <Button variant="contained" color="primary" onClick={next}>
-        Next
-      </Button>
+      <p>Write down your goal:</p>
     </div>
   );
 };
