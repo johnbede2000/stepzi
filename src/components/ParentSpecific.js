@@ -9,16 +9,18 @@ import Button from '@material-ui/core/Button';
 
 const ParentSpecific = () => {
   const [step, setStep] = React.useState(0);
-  const [goal, setGoal] = React.useState('');
-  const [howKnow, setHowKnow] = React.useState('');
-  const [posOne, setPosOne] = React.useState('');
-  const [posTwo, setPosTwo] = React.useState('');
-  const [obOne, setObOne] = React.useState('');
-  const [ObTwo, setObTwo] = React.useState('');
-  const [elPosOne, setElPosOne] = React.useState('');
-  const [elPosTwo, setElPosTwo] = React.useState('');
-  const [elObOne, setelObOne] = React.useState('');
-  const [elObTwo, setelObTwo] = React.useState('');
+  const [input, setInput] = React.useState({
+    goal: '',
+    HowWillYouKnow: '',
+    posOne: '',
+    posTwo: '',
+    obOne: '',
+    obTwo: '',
+    elPosOne: '',
+    elPosTwo: '',
+    elObOne: '',
+    elObTwo: '',
+  });
 
   const PrevButton = (step) => {
     if (step > 0) {
@@ -28,6 +30,10 @@ const ParentSpecific = () => {
         </Button>
       );
     }
+  };
+
+  handleChange = (input) => (e) => {
+    setInput({ [input]: e.target.value });
   };
 
   const NextButton = (step) => {
