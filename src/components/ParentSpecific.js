@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 
 const ParentSpecific = () => {
   const [step, setStep] = React.useState(0);
-  const [input, setInput] = React.useState({
+  const [values, setValues] = React.useState({
     goal: '',
     HowWillYouKnow: '',
     posOne: '',
@@ -32,8 +32,8 @@ const ParentSpecific = () => {
     }
   };
 
-  handleChange = (input) => (e) => {
-    setInput({ [input]: e.target.value });
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const NextButton = (step) => {
@@ -53,15 +53,15 @@ const ParentSpecific = () => {
   const renderSwitch = (step) => {
     switch (step) {
       case 0:
-        return <InitialGoal />;
+        return <InitialGoal handleChange={handleChange} values={values} />;
       case 1:
-        return <HowWillYouKnow />;
+        return <HowWillYouKnow handleChange={handleChange} values={values} />;
       case 2:
-        return <Rewrite />;
+        return <Rewrite handleChange={handleChange} />;
       case 3:
-        return <TwoPos />;
+        return <TwoPos handleChange={handleChange} />;
       case 4:
-        return <Elaborate />;
+        return <Elaborate handleChange={handleChange} />;
       case 5:
         return <WhatNext />;
       default:

@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-const InitialGoal = () => {
+const InitialGoal = ({ values, handleChange }) => {
   return (
     <div>
       <p>Write down your goal:</p>
@@ -9,9 +9,12 @@ const InitialGoal = () => {
         id="goal"
         label="Goal"
         type="text"
+        name="goal"
+        value={values.goal}
         multiline="true"
         variant="filled"
         required="true"
+        onChange={(e) => handleChange(e)}
       />
     </div>
   );

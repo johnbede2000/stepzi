@@ -1,9 +1,11 @@
 import React from 'react';
 
-const HowWillYouKnow = () => {
+const HowWillYouKnow = ({ values }) => {
+  console.log(values);
   return (
     <>
       <p>Second page!</p>
+      <p>{values.goal}</p>
     </>
   );
 };
