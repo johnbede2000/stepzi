@@ -47,13 +47,34 @@ const ParentSpecific = () => {
           />
         );
       case 2:
-        return <Rewrite handleChange={handleChange} values={values} />;
+        return (
+          <Rewrite
+            handleChange={handleChange}
+            values={values}
+            step={step}
+            setStep={setStep}
+          />
+        );
       case 3:
-        return <TwoPos handleChange={handleChange} values={values} />;
+        return (
+          <TwoPos
+            handleChange={handleChange}
+            values={values}
+            step={step}
+            setStep={setStep}
+          />
+        );
       case 4:
-        return <Elaborate handleChange={handleChange} values={values} />;
+        return (
+          <Elaborate
+            handleChange={handleChange}
+            values={values}
+            step={step}
+            setStep={setStep}
+          />
+        );
       case 5:
-        return <WhatNext values={values} />;
+        return <WhatNext values={values} step={step} setStep={setStep} />;
       default:
         return <p>There has been an error</p>;
     }

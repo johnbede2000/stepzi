@@ -29,6 +29,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
         label="The Moment"
         type="text"
         name="moment"
+        error={err}
         value={values.moment}
         multiline="true"
         variant="filled"
