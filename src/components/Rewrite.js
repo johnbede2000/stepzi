@@ -1,5 +1,11 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, TextField } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import { PrevButton, NextButton } from './Buttons';
 
 const Rewrite = ({ values, handleChange, step, setStep }) => {
@@ -29,13 +35,17 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
         variant="filled"
         onChange={(e) => handleChange(e)}
       />
+      {err && (
+        <Typography color="error" variant="caption">
+          Empty
+        </Typography>
+      )}
       <div>
         <PrevButton step={step} setStep={setStep}></PrevButton>
         <NextButton
           field={values.rewrite} // is there shorthand for these?
           step={step}
           setStep={setStep}
-          err={err}
           setErr={setErr}
         />
       </div>

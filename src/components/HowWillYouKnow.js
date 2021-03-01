@@ -35,13 +35,17 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
         variant="filled"
         onChange={(e) => handleChange(e)}
       />
+      {err && (
+        <Typography color="error" variant="caption">
+          Empty
+        </Typography>
+      )}
       <div>
         <PrevButton step={step} setStep={setStep}></PrevButton>
         <NextButton
           field={values.moment} // is there shorthand for these?
           step={step}
           setStep={setStep}
-          err={err}
           setErr={setErr}
         />
       </div>
