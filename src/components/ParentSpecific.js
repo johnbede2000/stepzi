@@ -11,7 +11,8 @@ const ParentSpecific = () => {
   const [step, setStep] = React.useState(0);
   const [values, setValues] = React.useState({
     goal: '',
-    HowWillYouKnow: '',
+    moment: '',
+    reWrite: '',
     posOne: '',
     posTwo: '',
     obOne: '',
@@ -21,6 +22,7 @@ const ParentSpecific = () => {
     elObOne: '',
     elObTwo: '',
   });
+  const [actions, setActions] = React.useState([]);
 
   const PrevButton = (step) => {
     if (step > 0) {
@@ -57,13 +59,13 @@ const ParentSpecific = () => {
       case 1:
         return <HowWillYouKnow handleChange={handleChange} values={values} />;
       case 2:
-        return <Rewrite handleChange={handleChange} />;
+        return <Rewrite handleChange={handleChange} values={values} />;
       case 3:
-        return <TwoPos handleChange={handleChange} />;
+        return <TwoPos handleChange={handleChange} values={values} />;
       case 4:
-        return <Elaborate handleChange={handleChange} />;
+        return <Elaborate handleChange={handleChange} values={values} />;
       case 5:
-        return <WhatNext />;
+        return <WhatNext values={values} actions={actions} />;
       default:
         return <p>There has been an error</p>;
     }
