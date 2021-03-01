@@ -1,26 +1,49 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import {
+  Card,
+  CardHeader,
+  TextField,
+  Box,
+  CardContent,
+  Typography,
+} from '@material-ui/core';
+import { PrevButton, NextButton } from './Buttons';
 
-const HowWillYouKnow = ({ values, handleChange }) => {
-  console.log(values);
+const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
+  const [err, setErr] = React.useState(false);
   return (
     <>
-      <p>Your goal: {values.goal}</p>
-      <p>
-        How will you know I know when you’ve succeeded? Describe the moment when
-        you know you will have reached your goal:
-      </p>
+      <Card>
+        <CardHeader title="Your goal" />
+        <CardContent>{values.goal}</CardContent>
+      </Card>
+      <Typography>
+        Get a clear idea about what success will look like. How will you know
+        when you’ve succeeded?
+        <Box fontWeight="fontWeightBold">
+          Describe the moment when you know you will have reached your goal:
+        </Box>
+      </Typography>
       <TextField
-        id="rewrite"
-        label="Goal"
+        id="moment"
+        label="The Moment"
         type="text"
         name="moment"
         value={values.moment}
         multiline="true"
         variant="filled"
-        required="true"
         onChange={(e) => handleChange(e)}
       />
+      <div>
+        <PrevButton step={step} setStep={setStep}></PrevButton>
+        <NextButton
+          field={values.moment} // is there shorthand for these?
+          step={step}
+          setStep={setStep}
+          err={err}
+          setErr={setErr}
+        />
+      </div>
     </>
   );
 };
