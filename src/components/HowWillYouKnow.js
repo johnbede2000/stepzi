@@ -8,6 +8,8 @@ import {
 } from '@material-ui/core';
 import { PrevButton, NextButton } from './Buttons';
 import { makeStyles } from '@material-ui/core/styles';
+import Vertical from './Vertical';
+import Error from './Error';
 
 const useStyles = makeStyles((theme) => ({
   cursive: {
@@ -20,7 +22,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
   const [err, setErr] = React.useState(false);
   const classes = useStyles();
   return (
-    <>
+    <Vertical>
       <Card>
         <CardContent>
           Your goal:{' '}
@@ -29,29 +31,27 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           </Box>
         </CardContent>
       </Card>
-      <Typography variant="body">
+      <Typography variant="body1">
         Get a clear idea about what success will look like. How will you know
         when you’ve succeeded?
-        <Box>
-          Describe the moment when you know you will have reached your goal:
-        </Box>
       </Typography>
-      <TextField
-        id="moment"
-        label="The Moment"
-        type="text"
-        name="moment"
-        error={err}
-        value={values.moment}
-        multiline="true"
-        variant="filled"
-        onChange={(e) => handleChange(e)}
-      />
-      {err && (
-        <Typography color="error" variant="caption">
-          Empty
-        </Typography>
-      )}
+      <Typography variant="body1">
+        Describe the moment when you know you will have reached your goal:
+      </Typography>
+      <Box display="flex" flexDirection="column">
+        <TextField
+          id="moment"
+          label="The Moment"
+          type="text"
+          name="moment"
+          error={err}
+          value={values.moment}
+          multiline="true"
+          variant="filled"
+          onChange={(e) => handleChange(e)}
+        />
+        <Error err={err} />
+      </Box>
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <PrevButton step={step} setStep={setStep}></PrevButton>
         <NextButton
@@ -61,7 +61,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           setErr={setErr}
         />
       </Box>
-    </>
+    </Vertical>
   );
 };
 
