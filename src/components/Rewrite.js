@@ -24,7 +24,9 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           The moment you'll know you've reached your goal: {values.moment}
         </CardContent>
       </Card>
-      <p>Now rewrite the goal using the information:</p>
+      <Typography variant="body">
+        Now rewrite the goal using the information:
+      </Typography>
       <TextField
         id="rewrite"
         label="My improved goal"
@@ -41,12 +43,7 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           Empty
         </Typography>
       )}
-      <Box
-        mt={2}
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-      >
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
         <PrevButton step={step} setStep={setStep}></PrevButton>
         <NextButton
           field={values.rewrite} // is there shorthand for these?

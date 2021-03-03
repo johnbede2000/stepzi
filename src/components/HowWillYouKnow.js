@@ -29,7 +29,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           </Box>
         </CardContent>
       </Card>
-      <Typography>
+      <Typography variant="body">
         Get a clear idea about what success will look like. How will you know
         when you’ve succeeded?
         <Box>
@@ -52,12 +52,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           Empty
         </Typography>
       )}
-      <Box
-        mt={2}
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-      >
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
         <PrevButton step={step} setStep={setStep}></PrevButton>
         <NextButton
           field={values.moment} // is there shorthand for these?

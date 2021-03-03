@@ -6,7 +6,7 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
   const [err, setErr] = React.useState(false);
   return (
     <>
-      <p>Write down your goal:</p>
+      <Typography variant="body">Write down your goal:</Typography>
       <TextField
         id="goal"
         label="My Goal"
@@ -23,12 +23,7 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           Empty
         </Typography>
       )}
-      <Box
-        mt={2}
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-      >
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
         <NextButton
           field={values.goal} // is there shorthand for these?
           step={step}
