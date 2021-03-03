@@ -26,18 +26,20 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
     <Vertical>
       <Card>
         <CardContent>
-          <Typography variant="body1">
-            Your goal:{' '}
-            <Box component="span" className={classes.cursive}>
-              {values.goal}
-            </Box>
+          <Typography variant="body1">Your goal:</Typography>
+          <Typography variant="body1" className={classes.cursive}>
+            {values.goal}
           </Typography>
-          <Divider />
+          <Divider style={{ margin: '1em 0' }} />
           <Typography variant="body1">
-            The moment you'll know you've reached your goal:{' '}
-            <Box component="span" className={classes.cursive}>
-              {values.moment}
-            </Box>
+            The moment you'll know you've reached your goal:
+          </Typography>
+          <Typography
+            variant="body1"
+            component="span"
+            className={classes.cursive}
+          >
+            {values.moment}
           </Typography>
         </CardContent>
       </Card>
