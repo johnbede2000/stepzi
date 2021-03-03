@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   cursive: {
     fontFamily: 'Caveat, cursive',
     fontSize: '2em',
+    color: '#002884',
   },
 }));
 
@@ -44,6 +45,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           label="The Moment"
           type="text"
           name="moment"
+          fullWidth="true"
           error={err}
           value={values.moment}
           multiline="true"

@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   cursive: {
     fontFamily: 'Caveat, cursive',
     fontSize: '2em',
+    color: '#002884',
   },
 }));
 
@@ -53,6 +54,7 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           label="My improved goal"
           type="text"
           error={err}
+          fullWidth="true"
           name="rewrite"
           value={values.rewrite}
           multiline="true"

@@ -15,6 +15,7 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           label="My Goal"
           type="text"
           error={err}
+          fullWidth="true"
           name="goal"
           value={values.goal}
           multiline="true"
