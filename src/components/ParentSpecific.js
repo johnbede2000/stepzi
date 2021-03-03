@@ -82,16 +82,10 @@ const ParentSpecific = () => {
 
   return (
     <>
-      <h1>Get Specific</h1>
+      <h1>1. Get Specific</h1>
       {renderSwitch(step)}
     </>
   );
 };
 
 export default ParentSpecific;
-
-/*
-parent holds state for step, values
-each page affects value by receiving handleChange which invokes setValue - which checks current step
-each page has a next button which checks a specific field and if it's empty will highlight it for a second. It can select that field by receiving which field to receive as a prop? Then if not empty then can invoke setStep - which it needs to receive too
-*/

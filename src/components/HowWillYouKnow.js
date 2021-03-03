@@ -1,26 +1,38 @@
 import React from 'react';
 import {
   Card,
-  CardHeader,
   TextField,
-  Box,
   CardContent,
+  Box,
   Typography,
 } from '@material-ui/core';
 import { PrevButton, NextButton } from './Buttons';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  cursive: {
+    fontFamily: 'Caveat, cursive',
+    fontSize: '2em',
+  },
+}));
 
 const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
   const [err, setErr] = React.useState(false);
+  const classes = useStyles();
   return (
     <>
       <Card>
-        <CardHeader title="Your goal" />
-        <CardContent>{values.goal}</CardContent>
+        <CardContent>
+          Your goal:{' '}
+          <Box component="span" className={classes.cursive}>
+            {values.goal}
+          </Box>
+        </CardContent>
       </Card>
       <Typography>
         Get a clear idea about what success will look like. How will you know
         when you’ve succeeded?
-        <Box fontWeight="fontWeightBold">
+        <Box>
           Describe the moment when you know you will have reached your goal:
         </Box>
       </Typography>
@@ -40,7 +52,12 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           Empty
         </Typography>
       )}
-      <div>
+      <Box
+        mt={2}
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+      >
         <PrevButton step={step} setStep={setStep}></PrevButton>
         <NextButton
           field={values.moment} // is there shorthand for these?
@@ -48,7 +65,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           setStep={setStep}
           setErr={setErr}
         />
-      </div>
+      </Box>
     </>
   );
 };

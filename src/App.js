@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <Container>
+      <Container maxWidth="md">
         <ParentSpecific />
       </Container>
     </>

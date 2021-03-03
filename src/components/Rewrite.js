@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Card,
+  Box,
   CardContent,
   CardHeader,
   TextField,
@@ -40,7 +41,12 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           Empty
         </Typography>
       )}
-      <div>
+      <Box
+        mt={2}
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+      >
         <PrevButton step={step} setStep={setStep}></PrevButton>
         <NextButton
           field={values.rewrite} // is there shorthand for these?
@@ -48,7 +54,7 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           setStep={setStep}
           setErr={setErr}
         />
-      </div>
+      </Box>
     </>
   );
 };
