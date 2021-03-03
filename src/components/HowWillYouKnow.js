@@ -38,7 +38,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
       <Typography variant="body1">
         Describe the moment when you know you will have reached your goal:
       </Typography>
-      <Box display="flex" flexDirection="column">
+      <Box>
         <TextField
           id="moment"
           label="The Moment"
