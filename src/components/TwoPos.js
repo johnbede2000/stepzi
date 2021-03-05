@@ -130,7 +130,11 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
         <Button variant="contained" onClick={() => setStep(step - 1)}>
           Back
         </Button>
-        <Button variant="contained" color="primary" onClick={() => checkValues}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => checkValues()}
+        >
           Next
         </Button>
       </Box>
