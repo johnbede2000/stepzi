@@ -3,13 +3,12 @@ import {
   Card,
   Box,
   CardContent,
+  Button,
   Divider,
   TextField,
   Typography,
 } from '@material-ui/core';
-import { PrevButton, NextButton } from './Buttons';
 import { makeStyles } from '@material-ui/core/styles';
-import Error from './Error';
 import Vertical from './Vertical';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Rewrite = ({ values, handleChange, step, setStep }) => {
-  const [err, setErr] = React.useState(false);
+  const [validate, setValidate] = React.useState(false);
   const classes = useStyles();
   return (
     <Vertical>
@@ -53,25 +52,37 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           id="rewrite"
           label="My improved goal"
           type="text"
-          error={err}
+          error={validate}
+          helperText="Required"
           fullWidth="true"
           name="rewrite"
           value={values.rewrite}
           multiline="true"
-          variant="filled"
+          variant="Outlined"
           onChange={(e) => handleChange(e)}
         />
-        <Error err={err} />
       </Box>
 
       <Box display="flex" flexDirection="row" justifyContent="space-between">
-        <PrevButton step={step} setStep={setStep}></PrevButton>
-        <NextButton
-          field={values.rewrite} // is there shorthand for these?
-          step={step}
-          setStep={setStep}
-          setErr={setErr}
-        />
+        <Button variant="contained" onClick={() => setStep(step - 1)}>
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            if (!values.rewrite) {
+              setValidate(true);
+              setTimeout(() => {
+                setValidate(false);
+              }, 2000);
+            } else {
+              setStep(step + 1);
+            }
+          }}
+        >
+          Next
+        </Button>
       </Box>
     </Vertical>
   );

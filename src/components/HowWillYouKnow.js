@@ -4,12 +4,11 @@ import {
   TextField,
   CardContent,
   Box,
+  Button,
   Typography,
 } from '@material-ui/core';
-import { PrevButton, NextButton } from './Buttons';
 import { makeStyles } from '@material-ui/core/styles';
 import Vertical from './Vertical';
-import Error from './Error';
 
 const useStyles = makeStyles((theme) => ({
   cursive: {
@@ -20,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
-  const [err, setErr] = React.useState(false);
   const classes = useStyles();
+  const [validate, setValidate] = React.useState(false);
   return (
     <Vertical>
       <Card>
@@ -46,22 +45,34 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           type="text"
           name="moment"
           fullWidth="true"
-          error={err}
+          error={validate}
+          helperText="Required"
           value={values.moment}
           multiline="true"
-          variant="filled"
+          variant="Outlined"
           onChange={(e) => handleChange(e)}
         />
-        <Error err={err} />
       </Box>
       <Box display="flex" flexDirection="row" justifyContent="space-between">
-        <PrevButton step={step} setStep={setStep}></PrevButton>
-        <NextButton
-          field={values.moment} // is there shorthand for these?
-          step={step}
-          setStep={setStep}
-          setErr={setErr}
-        />
+        <Button variant="contained" onClick={() => setStep(step - 1)}>
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            if (!values.moment) {
+              setValidate(true);
+              setTimeout(() => {
+                setValidate(false);
+              }, 2000);
+            } else {
+              setStep(step + 1);
+            }
+          }}
+        >
+          Next
+        </Button>
       </Box>
     </Vertical>
   );

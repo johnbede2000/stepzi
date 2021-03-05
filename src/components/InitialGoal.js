@@ -19,7 +19,7 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           name="goal"
           value={values.goal}
           multiline="true"
-          variant="filled"
+          variant="Outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>
