@@ -1,5 +1,6 @@
 // https://www.smashingmagazine.com/2020/10/react-validation-formik-yup/
 
+/*
 import React, { useState, useEffect } from 'react';
 import './Form.scss';
 
@@ -96,3 +97,4 @@ const Form = () => {
 };
 
 export default Form;
+*/
