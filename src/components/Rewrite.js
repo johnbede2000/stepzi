@@ -58,7 +58,7 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           name="rewrite"
           value={values.rewrite}
           multiline="true"
-          variant="Outlined"
+          variant="outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>

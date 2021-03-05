@@ -49,7 +49,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           helperText="Required"
           value={values.moment}
           multiline="true"
-          variant="Outlined"
+          variant="outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>
