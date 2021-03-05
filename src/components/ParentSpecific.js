@@ -5,7 +5,7 @@ import Rewrite from './Rewrite';
 import TwoPos from './TwoPos';
 import Elaborate from './Elaborate';
 import WhatNext from './WhatNext';
-import { LinearProgress } from '@material-ui/core';
+import { LinearProgress, Box } from '@material-ui/core';
 
 const ParentSpecific = () => {
   const [step, setStep] = React.useState(0);
@@ -56,11 +56,11 @@ const ParentSpecific = () => {
   };
 
   return (
-    <>
+    <Box pb={2}>
       <h1>1. Get Specific</h1>
       <LinearProgress variant="determinate" value={progressValue()} />
       {renderSwitch(step)}
-    </>
+    </Box>
   );
 };
 
