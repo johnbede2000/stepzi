@@ -3,10 +3,7 @@ import { Typography, TextField, Box, Button } from '@material-ui/core';
 import Vertical from './Vertical';
 
 const InitialGoal = ({ values, handleChange, setStep, step }) => {
-  const [validate, setValidate] = React.useState({
-    goalerr: false,
-    goaltext: 'Required',
-  });
+  const [validate, setValidate] = React.useState(false);
 
   return (
     <Vertical>
@@ -16,8 +13,8 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           id="goal"
           label="My Goal"
           type="text"
-          error={validate.goalerr}
-          helperText={validate.goaltext}
+          error={validate}
+          helperText="Required"
           fullWidth="true"
           name="goal"
           value={values.goal}
@@ -32,17 +29,9 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           color="primary"
           onClick={() => {
             if (!values.goal) {
-              setValidate({
-                ...validate,
-                goalerr: true,
-                goaltext: 'Cannot be empty!',
-              });
+              setValidate(true);
               setTimeout(() => {
-                setValidate({
-                  ...validate,
-                  goalerr: false,
-                  goaltext: 'Required',
-                });
+                setValidate(false);
               }, 2000);
             } else {
               setStep(step + 1);
