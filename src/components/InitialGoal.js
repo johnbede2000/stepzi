@@ -1,11 +1,13 @@
 import React from 'react';
-import { Typography, TextField, Box } from '@material-ui/core';
-import { NextButton } from './Buttons';
+import { Typography, TextField, Box, Button } from '@material-ui/core';
 import Vertical from './Vertical';
-import Error from './Error';
 
 const InitialGoal = ({ values, handleChange, setStep, step }) => {
-  const [err, setErr] = React.useState(false);
+  const [validate, setValidate] = React.useState({
+    goalerr: false,
+    goaltext: 'Required',
+  });
+
   return (
     <Vertical>
       <Typography variant="body1">Write down your goal:</Typography>
@@ -14,7 +16,8 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           id="goal"
           label="My Goal"
           type="text"
-          error={err}
+          error={validate.goalerr}
+          helperText={validate.goaltext}
           fullWidth="true"
           name="goal"
           value={values.goal}
@@ -22,16 +25,32 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           variant="filled"
           onChange={(e) => handleChange(e)}
         />
-        <Error err={err} />
       </Box>
-
-      <Box display="flex" flexDirection="row" justifyContent="space-between">
-        <NextButton
-          field={values.goal} // is there shorthand for these?
-          step={step}
-          setStep={setStep}
-          setErr={setErr}
-        />
+      <Box display="flex" flexDirection="row" justifyContent="flex-end">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            if (!values.goal) {
+              setValidate({
+                ...validate,
+                goalerr: true,
+                goaltext: 'Cannot be empty!',
+              });
+              setTimeout(() => {
+                setValidate({
+                  ...validate,
+                  goalerr: false,
+                  goaltext: 'Required',
+                });
+              }, 2000);
+            } else {
+              setStep(step + 1);
+            }
+          }}
+        >
+          Next
+        </Button>
       </Box>
     </Vertical>
   );
