@@ -28,61 +28,31 @@ const ParentSpecific = () => {
   };
 
   const renderSwitch = (step) => {
+    const reusedProps = {
+      handleChange,
+      values,
+      step,
+      setStep,
+    };
+
     switch (step) {
-      case 0:
-        return (
-          <InitialGoal
-            handleChange={handleChange}
-            values={values}
-            step={step}
-            setStep={setStep}
-          />
-        );
-      case 1:
-        return (
-          <HowWillYouKnow
-            handleChange={handleChange}
-            values={values}
-            step={step}
-            setStep={setStep}
-          />
-        );
-      case 2:
-        return (
-          <Rewrite
-            handleChange={handleChange}
-            values={values}
-            step={step}
-            setStep={setStep}
-          />
-        );
-      case 3:
-        return (
-          <TwoPos
-            handleChange={handleChange}
-            values={values}
-            step={step}
-            setStep={setStep}
-          />
-        );
-      case 4:
-        return (
-          <Elaborate
-            handleChange={handleChange}
-            values={values}
-            step={step}
-            setStep={setStep}
-          />
-        );
-      case 5:
-        return <WhatNext values={values} step={step} setStep={setStep} />;
       default:
-        return <p>There has been an error</p>;
+        return <InitialGoal {...reusedProps} />;
+      case 1:
+        return <HowWillYouKnow {...reusedProps} />;
+      case 2:
+        return <Rewrite {...reusedProps} />;
+      case 3:
+        return <TwoPos {...reusedProps} />;
+      case 4:
+        return <Elaborate {...reusedProps} />;
+      case 5:
+        return <WhatNext {...reusedProps} />;
     }
   };
 
   const progressValue = () => {
-    return (step / 5) * 100;
+    return (step / 5) * 100 + 20;
   };
 
   return (
