@@ -1,13 +1,14 @@
 import React from 'react';
 import { TextField, Box, Button, Typography } from '@material-ui/core';
 import Vertical from './Vertical';
+import custom from '../customStyle';
 
 const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
   const [validate, setValidate] = React.useState(false);
   return (
     <Vertical>
       <Typography variant="body1">Your goal:</Typography>
-      <Typography className="cursive" variant="body1">
+      <Typography style={custom.cursive} variant="body1">
         {values.goal}
       </Typography>
 

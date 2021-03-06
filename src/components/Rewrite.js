@@ -1,29 +1,20 @@
 import React from 'react';
 import { Box, Button, TextField, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import custom from '../customStyle';
 import Vertical from './Vertical';
-
-const useStyles = makeStyles((theme) => ({
-  cursive: {
-    fontFamily: 'Caveat, cursive',
-    fontSize: '2em',
-    color: '#002884',
-  },
-}));
 
 const Rewrite = ({ values, handleChange, step, setStep }) => {
   const [validate, setValidate] = React.useState(false);
-  const classes = useStyles();
   return (
     <Vertical>
       <Typography variant="body1">Your goal:</Typography>
-      <Typography variant="body1" className={classes.cursive}>
+      <Typography variant="body1" style={custom.cursive}>
         {values.goal}
       </Typography>
       <Typography variant="body1">
         The moment you'll know you've reached your goal:
       </Typography>
-      <Typography variant="body1" component="span" className={classes.cursive}>
+      <Typography variant="body1" style={custom.cursive}>
         {values.moment}
       </Typography>
 

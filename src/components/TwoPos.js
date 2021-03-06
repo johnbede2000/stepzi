@@ -1,18 +1,9 @@
 import React from 'react';
 import Vertical from './Vertical';
 import { Typography, Box, Button, TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  cursive: {
-    fontFamily: 'Caveat, cursive',
-    fontSize: '2em',
-    color: '#002884',
-  },
-}));
+import custom from '../customStyle';
 
 const TwoPos = ({ values, handleChange, step, setStep }) => {
-  const classes = useStyles();
   const [validate, setValidate] = React.useState({
     posOne: false,
     posTwo: false,
@@ -49,7 +40,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
   return (
     <Vertical>
       <Typography variant="body1">Your goal:</Typography>
-      <Typography variant="body1" className={classes.cursive}>
+      <Typography variant="body1" style={custom.cursive}>
         {values.rewrite}
       </Typography>
 
