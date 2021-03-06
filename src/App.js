@@ -1,6 +1,5 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
+import { CssBaseline, Container, Box } from '@material-ui/core';
 import ParentSpecific from './components/ParentSpecific';
 
 function App() {
@@ -8,7 +7,9 @@ function App() {
     <>
       <CssBaseline />
       <Container maxWidth="md">
-        <ParentSpecific />
+        <Box pt={2} pb={2}>
+          <ParentSpecific />
+        </Box>
       </Container>
     </>
   );
