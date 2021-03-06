@@ -5,7 +5,7 @@ import { Box } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   vertical: {
     '& > *+*': {
-      marginTop: '1.5rem',
+      marginTop: theme.spacing(2.5),
     },
   },
 }));

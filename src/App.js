@@ -7,7 +7,7 @@ function App() {
     <>
       <CssBaseline />
       <Container maxWidth="md">
-        <Box pt={2} pb={2}>
+        <Box py={2.5}>
           <ParentSpecific />
         </Box>
       </Container>
