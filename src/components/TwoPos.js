@@ -73,10 +73,10 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           label="Positive aspect 1"
           type="text"
           error={validate.posOne}
-          fullWidth="true"
+          fullWidth={true}
           name="posOne"
           value={values.posOne}
-          multiline="true"
+          multiline={true}
           variant="filled"
           onChange={(e) => handleChange(e)}
         />
@@ -87,10 +87,10 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           label="Positive aspect 2"
           type="text"
           error={validate.posTwo}
-          fullWidth="true"
+          fullWidth={true}
           name="posTwo"
           value={values.posTwo}
-          multiline="true"
+          multiline={true}
           variant="filled"
           onChange={(e) => handleChange(e)}
         />
@@ -101,10 +101,10 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           label="Obstacle 1"
           type="text"
           error={validate.obOne}
-          fullWidth="true"
+          fullWidth={true}
           name="obOne"
           value={values.obOne}
-          multiline="true"
+          multiline={true}
           variant="filled"
           onChange={(e) => handleChange(e)}
         />
@@ -115,10 +115,10 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           label="Obstacle 2"
           type="text"
           error={validate.obTwo}
-          fullWidth="true"
+          fullWidth={true}
           name="obTwo"
           value={values.obTwo}
-          multiline="true"
+          multiline={true}
           variant="filled"
           onChange={(e) => handleChange(e)}
         />

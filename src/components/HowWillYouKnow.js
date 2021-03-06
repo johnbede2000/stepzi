@@ -44,11 +44,11 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           label="The Moment"
           type="text"
           name="moment"
-          fullWidth="true"
+          fullWidth={true}
           error={validate}
           helperText="Required"
           value={values.moment}
-          multiline="true"
+          multiline={true}
           variant="filled"
           onChange={(e) => handleChange(e)}
         />

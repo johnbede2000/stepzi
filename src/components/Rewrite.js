@@ -54,10 +54,10 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           type="text"
           error={validate}
           helperText="Required"
-          fullWidth="true"
+          fullWidth={true}
           name="rewrite"
           value={values.rewrite}
-          multiline="true"
+          multiline={true}
           variant="filled"
           onChange={(e) => handleChange(e)}
         />

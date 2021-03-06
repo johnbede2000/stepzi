@@ -15,10 +15,10 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           type="text"
           error={validate}
           helperText="Required"
-          fullWidth="true"
+          fullWidth={true}
           name="goal"
           value={values.goal}
-          multiline="true"
+          multiline={true}
           variant="filled"
           onChange={(e) => handleChange(e)}
         />
