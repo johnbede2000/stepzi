@@ -77,7 +77,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           name="posOne"
           value={values.posOne}
           multiline="true"
-          variant="outlined"
+          variant="filled"
           onChange={(e) => handleChange(e)}
         />
       </Box>
@@ -91,7 +91,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           name="posTwo"
           value={values.posTwo}
           multiline="true"
-          variant="outlined"
+          variant="filled"
           onChange={(e) => handleChange(e)}
         />
       </Box>
@@ -105,7 +105,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           name="obOne"
           value={values.obOne}
           multiline="true"
-          variant="outlined"
+          variant="filled"
           onChange={(e) => handleChange(e)}
         />
       </Box>
@@ -119,7 +119,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           name="obTwo"
           value={values.obTwo}
           multiline="true"
-          variant="outlined"
+          variant="filled"
           onChange={(e) => handleChange(e)}
         />
       </Box>
