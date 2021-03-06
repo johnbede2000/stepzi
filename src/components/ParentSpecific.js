@@ -68,8 +68,8 @@ const ParentSpecific = () => {
 
   return (
     <Vertical>
-      <Typography variant="h4">{renderTitle(step)}</Typography>
       <LinearProgress variant="determinate" value={progressValue(6)} />
+      <Typography variant="h4">{renderTitle(step)}</Typography>
       {renderSwitch(step)}
     </Vertical>
   );
