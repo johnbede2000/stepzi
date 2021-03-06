@@ -25,10 +25,10 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
     <Vertical>
       <Card>
         <CardContent>
-          Your goal:{' '}
-          <Box component="span" className={classes.cursive}>
+          <Typography variant="body1">Your goal:</Typography>
+          <Typography className={classes.cursive} variant="body1">
             {values.goal}
-          </Box>
+          </Typography>
         </CardContent>
       </Card>
       <Typography variant="body1">
