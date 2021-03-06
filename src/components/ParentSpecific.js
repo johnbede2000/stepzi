@@ -5,10 +5,11 @@ import Rewrite from './Rewrite';
 import TwoPos from './TwoPos';
 import Elaborate from './Elaborate';
 import WhatNext from './WhatNext';
-import { LinearProgress, Box } from '@material-ui/core';
+import { LinearProgress, Typography } from '@material-ui/core';
+import Vertical from './Vertical';
 
 const ParentSpecific = () => {
-  const [step, setStep] = React.useState(0);
+  const [step, setStep] = React.useState(1);
   const [values, setValues] = React.useState({
     goal: '',
     moment: '',
@@ -38,29 +39,39 @@ const ParentSpecific = () => {
     switch (step) {
       default:
         return <InitialGoal {...reusedProps} />;
-      case 1:
-        return <HowWillYouKnow {...reusedProps} />;
       case 2:
-        return <Rewrite {...reusedProps} />;
+        return <HowWillYouKnow {...reusedProps} />;
       case 3:
-        return <TwoPos {...reusedProps} />;
+        return <Rewrite {...reusedProps} />;
       case 4:
-        return <Elaborate {...reusedProps} />;
+        return <TwoPos {...reusedProps} />;
       case 5:
+        return <Elaborate {...reusedProps} />;
+      case 6:
         return <WhatNext {...reusedProps} />;
     }
   };
 
-  const progressValue = () => {
-    return (step / 5) * 100 + 20;
+  const renderTitle = (step) => {
+    if (step < 4) {
+      return '1. Get Specific';
+    } else if (step > 3 && step < 6) {
+      return '2. Mental Contrasting';
+    } else if (step > 5) {
+      return '3. If-Then Planning';
+    }
+  };
+
+  const progressValue = (tot) => {
+    return (step / tot) * 100;
   };
 
   return (
-    <Box pb={2}>
-      <h1>1. Get Specific</h1>
-      <LinearProgress variant="determinate" value={progressValue()} />
+    <Vertical>
+      <Typography variant="h4">{renderTitle(step)}</Typography>
+      <LinearProgress variant="determinate" value={progressValue(6)} />
       {renderSwitch(step)}
-    </Box>
+    </Vertical>
   );
 };
 
