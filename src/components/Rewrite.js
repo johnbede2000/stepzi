@@ -27,7 +27,6 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           label="My improved goal"
           type="text"
           error={validate}
-          helperText="Required"
           fullWidth={true}
           name="rewrite"
           value={values.rewrite}

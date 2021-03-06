@@ -27,7 +27,6 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           name="moment"
           fullWidth={true}
           error={validate}
-          helperText="Required"
           value={values.moment}
           multiline={true}
           variant="outlined"

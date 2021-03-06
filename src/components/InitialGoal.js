@@ -14,7 +14,6 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           label="My Goal"
           type="text"
           error={validate}
-          helperText="Required"
           fullWidth={true}
           name="goal"
           value={values.goal}
