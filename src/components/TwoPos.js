@@ -57,9 +57,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
     <Vertical>
       <Card>
         <CardContent>
-          <Typography variant="body1">
-            The moment you'll know you've reached your goal:
-          </Typography>
+          <Typography variant="body1">Your goal:</Typography>
           <Typography variant="body1" className={classes.cursive}>
             {values.rewrite}
           </Typography>
