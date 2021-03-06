@@ -1,13 +1,6 @@
 import React from 'react';
 import Vertical from './Vertical';
-import {
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  Button,
-  TextField,
-} from '@material-ui/core';
+import { Typography, Box, Button, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -55,14 +48,11 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
 
   return (
     <Vertical>
-      <Card>
-        <CardContent>
-          <Typography variant="body1">Your goal:</Typography>
-          <Typography variant="body1" className={classes.cursive}>
-            {values.rewrite}
-          </Typography>
-        </CardContent>
-      </Card>
+      <Typography variant="body1">Your goal:</Typography>
+      <Typography variant="body1" className={classes.cursive}>
+        {values.rewrite}
+      </Typography>
+
       <Typography variant="body1">
         Think about two positive aspects of reaching the goal, and two obstacles
         that lie in the way.
@@ -77,7 +67,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           name="posOne"
           value={values.posOne}
           multiline={true}
-          variant="filled"
+          variant="outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>
@@ -91,7 +81,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           name="posTwo"
           value={values.posTwo}
           multiline={true}
-          variant="filled"
+          variant="outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>
@@ -105,7 +95,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           name="obOne"
           value={values.obOne}
           multiline={true}
-          variant="filled"
+          variant="outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>
@@ -119,7 +109,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           name="obTwo"
           value={values.obTwo}
           multiline={true}
-          variant="filled"
+          variant="outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>

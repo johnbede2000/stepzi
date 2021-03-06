@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Card,
-  Box,
-  CardContent,
-  Button,
-  Divider,
-  TextField,
-  Typography,
-} from '@material-ui/core';
+import { Box, Button, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Vertical from './Vertical';
 
@@ -24,25 +16,16 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
   const classes = useStyles();
   return (
     <Vertical>
-      <Card>
-        <CardContent>
-          <Typography variant="body1">Your goal:</Typography>
-          <Typography variant="body1" className={classes.cursive}>
-            {values.goal}
-          </Typography>
-          <Divider style={{ margin: '1em 0' }} />
-          <Typography variant="body1">
-            The moment you'll know you've reached your goal:
-          </Typography>
-          <Typography
-            variant="body1"
-            component="span"
-            className={classes.cursive}
-          >
-            {values.moment}
-          </Typography>
-        </CardContent>
-      </Card>
+      <Typography variant="body1">Your goal:</Typography>
+      <Typography variant="body1" className={classes.cursive}>
+        {values.goal}
+      </Typography>
+      <Typography variant="body1">
+        The moment you'll know you've reached your goal:
+      </Typography>
+      <Typography variant="body1" component="span" className={classes.cursive}>
+        {values.moment}
+      </Typography>
 
       <Typography variant="body1">
         Now rewrite the goal using the information:
@@ -58,7 +41,7 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           name="rewrite"
           value={values.rewrite}
           multiline={true}
-          variant="filled"
+          variant="outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>

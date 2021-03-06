@@ -1,36 +1,16 @@
 import React from 'react';
-import {
-  Card,
-  TextField,
-  CardContent,
-  Box,
-  Button,
-  Typography,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { TextField, Box, Button, Typography } from '@material-ui/core';
 import Vertical from './Vertical';
 
-const useStyles = makeStyles((theme) => ({
-  cursive: {
-    fontFamily: 'Caveat, cursive',
-    fontSize: '2em',
-    color: '#002884',
-  },
-}));
-
 const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
-  const classes = useStyles();
   const [validate, setValidate] = React.useState(false);
   return (
     <Vertical>
-      <Card>
-        <CardContent>
-          <Typography variant="body1">Your goal:</Typography>
-          <Typography className={classes.cursive} variant="body1">
-            {values.goal}
-          </Typography>
-        </CardContent>
-      </Card>
+      <Typography variant="body1">Your goal:</Typography>
+      <Typography className="cursive" variant="body1">
+        {values.goal}
+      </Typography>
+
       <Typography variant="body1">
         Get a clear idea about what success will look like. How will you know
         when you’ve succeeded?
@@ -49,7 +29,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           helperText="Required"
           value={values.moment}
           multiline={true}
-          variant="filled"
+          variant="outlined"
           onChange={(e) => handleChange(e)}
         />
       </Box>
