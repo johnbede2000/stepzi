@@ -23,7 +23,7 @@ const ParentSpecific = () => {
     elPosTwo: '',
     elObOne: '',
     elObTwo: '',
-    actions: [],
+    actions: ['development dummy', 'development dummy two', 'dev dummy three'],
   });
 
   const handleChange = (e) => {
@@ -70,8 +70,8 @@ const ParentSpecific = () => {
 
   return (
     <Vertical>
+      <LinearProgress variant="determinate" value={progressValue(6)} />
       <Mycard>
-        <LinearProgress variant="determinate" value={progressValue(6)} />
         <Typography variant="h4">{renderTitle(step)}</Typography>
       </Mycard>
       {renderSwitch(step)}
