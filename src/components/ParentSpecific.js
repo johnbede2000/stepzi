@@ -7,6 +7,7 @@ import Elaborate from './Elaborate';
 import WhatNext from './WhatNext';
 import { LinearProgress, Typography } from '@material-ui/core';
 import Vertical from './Vertical';
+import Mycard from './Mycard';
 
 const ParentSpecific = () => {
   const [step, setStep] = React.useState(1);
@@ -68,8 +69,10 @@ const ParentSpecific = () => {
 
   return (
     <Vertical>
-      <LinearProgress variant="determinate" value={progressValue(6)} />
-      <Typography variant="h4">{renderTitle(step)}</Typography>
+      <Mycard>
+        <LinearProgress variant="determinate" value={progressValue(6)} />
+        <Typography variant="h4">{renderTitle(step)}</Typography>
+      </Mycard>
       {renderSwitch(step)}
     </Vertical>
   );
