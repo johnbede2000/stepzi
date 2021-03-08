@@ -10,7 +10,7 @@ import Vertical from './Vertical';
 import Mycard from './Mycard';
 
 const ParentSpecific = () => {
-  const [step, setStep] = React.useState(1);
+  const [step, setStep] = React.useState(6);
   const [values, setValues] = React.useState({
     goal: '',
     moment: '',
@@ -23,7 +23,11 @@ const ParentSpecific = () => {
     elPosTwo: '',
     elObOne: '',
     elObTwo: '',
-    actions: ['development dummy', 'development dummy two', 'dev dummy three'],
+    actions: [
+      'development dummy really long and really long this might go over a line what will happen',
+      'development dummy two',
+      'dev dummy three',
+    ],
   });
 
   const handleChange = (e) => {

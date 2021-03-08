@@ -9,7 +9,7 @@ const Mycard = ({ children }) => {
         backgroundColor: '#fff',
         border: '1px solid #dadce0',
         borderRadius: '8px',
-        padding: '24px',
+        padding: '16px',
         wordWrap: 'break-word',
       }}
     >
