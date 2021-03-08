@@ -11,6 +11,7 @@ import {
   ListItemSecondaryAction,
   IconButton,
   ListItemText,
+  Divider,
 } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import AddIcon from '@material-ui/icons/Add';
@@ -23,6 +24,12 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
       Setsnackbar(true);
     } else {
       setStep(step + 1);
+    }
+  };
+
+  const createDivider = (index) => {
+    if (index < values.actions.length - 1) {
+      return <Divider />;
     }
   };
   return (
@@ -44,7 +51,7 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
       </Box>
       <Box bgcolor="#fff" border="1px solid #dadce0" borderRadius="8px">
         <List>
-          {values.actions.map((item) => {
+          {values.actions.map((item, index) => {
             return (
               <>
                 <ListItem>
@@ -55,6 +62,7 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
                     </IconButton>
                   </ListItemSecondaryAction>
                 </ListItem>
+                {createDivider(index)}
               </>
             );
           })}
