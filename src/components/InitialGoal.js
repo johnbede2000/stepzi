@@ -1,9 +1,21 @@
 import React from 'react';
-import { Typography, TextField, Box, Button } from '@material-ui/core';
+import {
+  Typography,
+  TextField,
+  Box,
+  Button,
+  Snackbar,
+} from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 import Vertical from './Vertical';
 
 const InitialGoal = ({ values, handleChange, setStep, step }) => {
   const [validate, setValidate] = React.useState(false);
+  const [snackbar, setSnackbar] = React.useState(false);
+
+  const onClose = () => {
+    setSnackbar(false);
+  };
 
   return (
     <Vertical>
@@ -29,9 +41,10 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           onClick={() => {
             if (!values.goal) {
               setValidate(true);
+              setSnackbar(true);
               setTimeout(() => {
                 setValidate(false);
-              }, 2000);
+              }, 3000);
             } else {
               setStep(step + 1);
             }
@@ -40,6 +53,11 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
           Next
         </Button>
       </Box>
+      <Snackbar open={snackbar} autoHideDuration={3000} onClose={onClose}>
+        <Alert onClose={onClose} severity="error">
+          Please complete all fields!
+        </Alert>
+      </Snackbar>
     </Vertical>
   );
 };
