@@ -23,6 +23,7 @@ const ParentSpecific = () => {
     elPosTwo: '',
     elObOne: '',
     elObTwo: '',
+    actions: [],
   });
 
   const handleChange = (e) => {
