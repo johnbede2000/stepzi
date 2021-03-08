@@ -2,6 +2,7 @@ import React from 'react';
 import Vertical from './Vertical';
 import { Typography, Box, Button, TextField } from '@material-ui/core';
 import custom from '../customStyle';
+import ErrSnackbar from './ErrSnackbar';
 
 const TwoPos = ({ values, handleChange, step, setStep }) => {
   const [validate, setValidate] = React.useState({
@@ -11,27 +12,33 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
     obTwo: false,
   });
 
+  const [snackbar, setSnackbar] = React.useState(false);
+
   const checkValues = () => {
     if (!values.posOne) {
       setValidate({ ...validate, posOne: true });
+      setSnackbar(true);
       setTimeout(() => {
         setValidate({ ...validate, posOne: false });
-      }, 2000);
+      }, 3000);
     } else if (!values.posTwo) {
       setValidate({ ...validate, posTwo: true });
+      setSnackbar(true);
       setTimeout(() => {
         setValidate({ ...validate, posTwo: false });
-      }, 2000);
+      }, 3000);
     } else if (!values.obOne) {
       setValidate({ ...validate, obOne: true });
+      setSnackbar(true);
       setTimeout(() => {
         setValidate({ ...validate, obOne: false });
-      }, 2000);
+      }, 3000);
     } else if (!values.obTwo) {
       setValidate({ ...validate, obTwo: true });
+      setSnackbar(true);
       setTimeout(() => {
         setValidate({ ...validate, obTwo: false });
-      }, 2000);
+      }, 3000);
     } else {
       setStep(step + 1);
     }
@@ -40,7 +47,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
   return (
     <Vertical>
       <Typography variant="body1">Your goal:</Typography>
-      <Typography variant="body1" style={custom.cursive}>
+      <Typography variant="body1" style={custom().cursive}>
         {values.rewrite}
       </Typography>
 
@@ -117,6 +124,7 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
           Next
         </Button>
       </Box>
+      <ErrSnackbar snackbar={snackbar} setSnackbar={setSnackbar} />
     </Vertical>
   );
 };

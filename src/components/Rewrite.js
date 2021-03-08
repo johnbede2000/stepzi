@@ -2,23 +2,25 @@ import React from 'react';
 import { Box, Button, TextField, Typography } from '@material-ui/core';
 import custom from '../customStyle';
 import Vertical from './Vertical';
+import ErrSnackbar from './ErrSnackbar';
 
 const Rewrite = ({ values, handleChange, step, setStep }) => {
   const [validate, setValidate] = React.useState(false);
+  const [snackbar, setSnackbar] = React.useState(false);
   return (
     <Vertical>
       <Typography variant="body1">Your goal:</Typography>
-      <Typography variant="body1" style={custom.cursive}>
+      <Typography variant="body1" style={custom().cursive}>
         {values.goal}
       </Typography>
       <Typography variant="body1">
         The moment you'll know you've reached your goal:
       </Typography>
-      <Typography variant="body1" style={custom.cursive}>
+      <Typography variant="body1" style={custom().cursive}>
         {values.moment}
       </Typography>
 
-      <Typography variant="body1">
+      <Typography variant="body1" style={{ fontWeight: 'bold' }}>
         Now rewrite the goal using the information:
       </Typography>
       <Box>
@@ -46,9 +48,10 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           onClick={() => {
             if (!values.rewrite) {
               setValidate(true);
+              setSnackbar(true);
               setTimeout(() => {
                 setValidate(false);
-              }, 2000);
+              }, 3000);
             } else {
               setStep(step + 1);
             }
@@ -57,6 +60,7 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           Next
         </Button>
       </Box>
+      <ErrSnackbar snackbar={snackbar} setSnackbar={setSnackbar} />
     </Vertical>
   );
 };

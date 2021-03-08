@@ -2,13 +2,16 @@ import React from 'react';
 import { TextField, Box, Button, Typography } from '@material-ui/core';
 import Vertical from './Vertical';
 import custom from '../customStyle';
+import ErrSnackbar from './ErrSnackbar';
 
 const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
   const [validate, setValidate] = React.useState(false);
+  const [snackbar, setSnackbar] = React.useState(false);
+
   return (
     <Vertical>
       <Typography variant="body1">Your goal:</Typography>
-      <Typography style={custom.cursive} variant="body1">
+      <Typography style={custom().cursive} variant="body1">
         {values.goal}
       </Typography>
 
@@ -16,7 +19,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
         Get a clear idea about what success will look like. How will you know
         when you’ve succeeded?
       </Typography>
-      <Typography variant="body1">
+      <Typography variant="body1" style={{ fontWeight: 'bold' }}>
         Describe the moment when you know you will have reached your goal:
       </Typography>
       <Box>
@@ -43,9 +46,10 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           onClick={() => {
             if (!values.moment) {
               setValidate(true);
+              setSnackbar(true);
               setTimeout(() => {
                 setValidate(false);
-              }, 2000);
+              }, 3000);
             } else {
               setStep(step + 1);
             }
@@ -54,6 +58,7 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           Next
         </Button>
       </Box>
+      <ErrSnackbar snackbar={snackbar} setSnackbar={setSnackbar} />
     </Vertical>
   );
 };
