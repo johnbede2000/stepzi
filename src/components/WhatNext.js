@@ -12,6 +12,12 @@ import {
   IconButton,
   ListItemText,
   Divider,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  TextField,
+  DialogActions,
 } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import AddIcon from '@material-ui/icons/Add';
@@ -19,6 +25,8 @@ import EditIcon from '@material-ui/icons/Edit';
 
 const WhatNext = ({ values, handleChange, step, setStep }) => {
   const [snackbar, Setsnackbar] = React.useState(false);
+  const [formIsOpen, setFormIsOpen] = React.useState(false);
+
   const checkValues = () => {
     if (values.actions.length < 1) {
       Setsnackbar(true);
@@ -27,6 +35,12 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
     }
   };
 
+  const handleSave = () => {
+    console.log('saved');
+  };
+  const handleDelete = () => {
+    console.log('deleted');
+  };
   const createDivider = (index) => {
     if (index < values.actions.length - 1) {
       return <Divider />;
@@ -45,10 +59,41 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
           color="primary"
           style={{ borderRadius: '20px' }}
           startIcon={<AddIcon />}
+          onClick={() => setFormIsOpen(true)}
         >
           Add a new task
         </Button>
       </Box>
+
+      <Dialog
+        open={formIsOpen}
+        onClose={() => setFormIsOpen(false)}
+        aria-labelledby="add-task"
+      >
+        <DialogTitle id="add-task">Add/Edit</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Put some handy tips here about adding actions.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="item"
+            label="Action"
+            type="text"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDelete} color="primary">
+            Delete
+          </Button>
+          <Button onClick={handleSave} color="primary">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       <Box bgcolor="#fff" border="1px solid #dadce0" borderRadius="8px">
         <List>
           {values.actions.map((item, index) => {
