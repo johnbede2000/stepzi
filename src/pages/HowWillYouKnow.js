@@ -1,47 +1,48 @@
 import React from 'react';
-import { Box, Button, TextField, Typography } from '@material-ui/core';
+import { TextField, Box, Button, Typography } from '@material-ui/core';
+import Vertical from '../components/Vertical';
 import custom from '../customStyle';
-import Vertical from './Vertical';
-import ErrSnackbar from './ErrSnackbar';
-import Mycard from './Mycard';
+import ErrSnackbar from '../components/ErrSnackbar';
+import Mycard from '../components/Mycard';
+import Info from '../components/Info';
 
-const Rewrite = ({ values, handleChange, step, setStep }) => {
+const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
   const [validate, setValidate] = React.useState(false);
   const [snackbar, setSnackbar] = React.useState(false);
+
   return (
     <Vertical>
       <Mycard>
         <Typography variant="body1">Your goal:</Typography>
-        <Typography variant="body1" style={custom().cursive}>
+        <Typography style={custom().cursive} variant="body1">
           {values.goal}
         </Typography>
         <Typography variant="body1">
-          The moment you'll know you've reached your goal:
+          Get a clear idea about what success will look like. State exactly what
+          you want to achieve: be concrete.
         </Typography>
-        <Typography variant="body1" style={custom().cursive}>
-          {values.moment}
-        </Typography>
+        <Info text="Doing so keeps you motivated until you get there; and removes the possibility of settling for less; and makes the course of action you need to take much clearer."></Info>
       </Mycard>
       <Mycard>
         <Typography variant="body1">
-          Now rewrite the goal using the information:
+          How will you know when you’ve succeeded? Describe the moment when you
+          know you will have reached your goal:
         </Typography>
         <Box>
           <TextField
-            id="rewrite"
-            label="My improved goal"
+            id="moment"
+            label="The Moment"
             type="text"
-            error={validate}
+            name="moment"
             fullWidth={true}
-            name="rewrite"
-            value={values.rewrite}
+            error={validate}
+            value={values.moment}
             multiline={true}
             variant="outlined"
             onChange={(e) => handleChange(e)}
           />
         </Box>
       </Mycard>
-
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <Button variant="contained" onClick={() => setStep(step - 1)}>
           Back
@@ -50,7 +51,7 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           variant="contained"
           color="primary"
           onClick={() => {
-            if (!values.rewrite) {
+            if (!values.moment) {
               setValidate(true);
               setSnackbar(true);
               setTimeout(() => {
@@ -69,4 +70,4 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
   );
 };
 
-export default Rewrite;
+export default HowWillYouKnow;

@@ -1,9 +1,9 @@
 import React from 'react';
-import Vertical from './Vertical';
+import Vertical from '../components/Vertical';
 import { Typography, Box, Button, TextField } from '@material-ui/core';
 import custom from '../customStyle';
-import ErrSnackbar from './ErrSnackbar';
-import Mycard from './Mycard';
+import ErrSnackbar from '../components/ErrSnackbar';
+import Mycard from '../components/Mycard';
 
 const TwoPos = ({ values, handleChange, step, setStep }) => {
   const [validate, setValidate] = React.useState({

@@ -6,11 +6,11 @@ import TwoPos from './TwoPos';
 import Elaborate from './Elaborate';
 import WhatNext from './WhatNext';
 import { LinearProgress, Typography } from '@material-ui/core';
-import Vertical from './Vertical';
-import Mycard from './Mycard';
+import Vertical from '../components/Vertical';
+import Mycard from '../components/Mycard';
 
 const ParentSpecific = () => {
-  const [step, setStep] = React.useState(6);
+  const [step, setStep] = React.useState(1);
   const [values, setValues] = React.useState({
     goal: '',
     moment: '',

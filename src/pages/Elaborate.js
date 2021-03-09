@@ -1,6 +1,6 @@
 import React from 'react';
-import Vertical from './Vertical';
-import Mycard from './Mycard';
+import Vertical from '../components/Vertical';
+import Mycard from '../components/Mycard';
 import { Typography, Box, Button } from '@material-ui/core';
 
 const Elaborate = ({ values, handleChange, step, setStep }) => {

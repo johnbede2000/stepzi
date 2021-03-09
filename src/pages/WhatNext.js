@@ -1,6 +1,6 @@
 import React from 'react';
-import Vertical from './Vertical';
-import Mycard from './Mycard';
+import Vertical from '../components/Vertical';
+import Mycard from '../components/Mycard';
 import {
   Typography,
   Box,

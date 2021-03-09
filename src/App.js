@@ -7,7 +7,7 @@ import {
   Typography,
   Toolbar,
 } from '@material-ui/core';
-import ParentSpecific from './components/ParentSpecific';
+import ParentSpecific from './pages/ParentSpecific';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({

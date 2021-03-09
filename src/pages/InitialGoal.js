@@ -1,8 +1,8 @@
 import React from 'react';
 import { Typography, TextField, Box, Button } from '@material-ui/core';
-import Vertical from './Vertical';
-import ErrSnackbar from './ErrSnackbar';
-import Mycard from './Mycard';
+import Vertical from '../components/Vertical';
+import ErrSnackbar from '../components/ErrSnackbar';
+import Mycard from '../components/Mycard';
 
 const InitialGoal = ({ values, handleChange, setStep, step }) => {
   const [validate, setValidate] = React.useState(false);
