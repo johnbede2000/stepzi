@@ -4,6 +4,7 @@ import { Typography, Box, Button, TextField } from '@material-ui/core';
 import custom from '../customStyle';
 import ErrSnackbar from '../components/ErrSnackbar';
 import Mycard from '../components/Mycard';
+import Info from '../components/Info';
 
 const TwoPos = ({ values, handleChange, step, setStep }) => {
   const [validate, setValidate] = React.useState({
@@ -48,12 +49,24 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
   return (
     <Vertical>
       <Mycard>
+        <Typography variant="body1">
+          Now it's time to go back and forth thinking about the success you want
+          to achieve, and the obstacles that stand in your way.
+        </Typography>
+        <Typography variant="body1">
+          First imagine how you will feel attaining your goal, the future you
+          want; the positive aspects of reaching your goal. Next, think &amp;
+          get specific about the obstacles that stand in your way of getting
+          what you want. The hurdles you’ll need to overcome to get there e.g.
+          competition trying to achieve the same thing
+        </Typography>
+        <Info text="This should kick your brain into gear - get the psychological wheels in motion - for the next page. It’s critical to experience the 'necessity to act'." />
+      </Mycard>
+      <Mycard>
         <Typography variant="body1">Your goal:</Typography>
         <Typography variant="body1" style={custom().cursive}>
           {values.rewrite}
         </Typography>
-      </Mycard>
-      <Mycard>
         <Typography variant="body1">
           Think about two positive aspects of reaching the goal, and two
           obstacles that lie in the way.
@@ -74,20 +87,6 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
         </Box>
         <Box>
           <TextField
-            id="posTwo"
-            label="Positive aspect 2"
-            type="text"
-            error={validate.posTwo}
-            fullWidth={true}
-            name="posTwo"
-            value={values.posTwo}
-            multiline={true}
-            variant="outlined"
-            onChange={(e) => handleChange(e)}
-          />
-        </Box>
-        <Box>
-          <TextField
             id="obOne"
             label="Obstacle 1"
             type="text"
@@ -100,6 +99,21 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
             onChange={(e) => handleChange(e)}
           />
         </Box>
+        <Box>
+          <TextField
+            id="posTwo"
+            label="Positive aspect 2"
+            type="text"
+            error={validate.posTwo}
+            fullWidth={true}
+            name="posTwo"
+            value={values.posTwo}
+            multiline={true}
+            variant="outlined"
+            onChange={(e) => handleChange(e)}
+          />
+        </Box>
+
         <Box>
           <TextField
             id="obTwo"

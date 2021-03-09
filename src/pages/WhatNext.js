@@ -1,6 +1,7 @@
 import React from 'react';
 import Vertical from '../components/Vertical';
 import Mycard from '../components/Mycard';
+import Info from '../components/Info';
 import {
   Typography,
   Box,
@@ -79,8 +80,12 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
     <Vertical>
       <Mycard>
         <Typography variant="body1">
-          What do you need to do next? Add as many items as come to mind.
+          What do you need to do next? State the specific steps/actions you’ll
+          need to take to reach your goal. Be clear and precise. Clarity on
+          exactly what you’ll need to do and how often you’ll need to do it, to
+          make the goal happen.
         </Typography>
+        <Info text="Doing so leaves no room for doubt about what you need to do/how often, or whether you’ve actually done it!" />
       </Mycard>
       <Box display="flex" justifyContent="center">
         <Button

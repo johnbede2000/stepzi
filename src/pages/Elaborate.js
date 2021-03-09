@@ -11,7 +11,10 @@ const Elaborate = ({ values, handleChange, step, setStep }) => {
   return (
     <Vertical>
       <Mycard>
-        <Typography variant="body1">Complete this page</Typography>
+        <Typography variant="body1">
+          Picture it as vividly as you can in your mind, really think about the
+          details, what it will be like to experience it.
+        </Typography>
       </Mycard>
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <Button variant="contained" onClick={() => setStep(step - 1)}>
