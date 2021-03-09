@@ -23,15 +23,7 @@ const ParentSpecific = () => {
     elPosTwo: '',
     elObOne: '',
     elObTwo: '',
-    actions: [
-      {
-        id: 1,
-        text:
-          'development dummy really long and really long this might go over a line what will happen',
-      },
-      { id: 2, text: 'development dummy two' },
-      { id: 3, text: 'dev dummy three' },
-    ],
+    actions: [],
   });
 
   const handleChange = (e) => {

@@ -54,11 +54,16 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
     const tempArray = values.actions;
     tempArray.push(item);
     setValues({ ...values, actions: tempArray });
+    setActionsHasItem(true);
     setFormIsOpen(false);
     setNewItem('');
   };
   const handleDelete = () => {
     // delete from array here
+
+    if (values.actions.length < 1) {
+      setActionsHasItem(false);
+    }
     setFormIsOpen(false);
     setNewItem('');
   };
@@ -67,6 +72,9 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
       return <Divider />;
     }
   };
+
+  const [actionsHasItem, setActionsHasItem] = React.useState(false);
+
   return (
     <Vertical>
       <Mycard>
@@ -117,29 +125,31 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
         </DialogActions>
       </Dialog>
 
-      <Box bgcolor="#fff" border="1px solid #dadce0" borderRadius="8px">
-        <List>
-          {values.actions.map((item, index) => {
-            return (
-              <Box key={item.id}>
-                <ListItem>
-                  <ListItemText>{item.text}</ListItemText>
-                  <ListItemSecondaryAction>
-                    <IconButton
-                      edge="end"
-                      aria-label="edit"
-                      onClick={(e) => clickEdit(e)}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
-                {createDivider(index)}
-              </Box>
-            );
-          })}
-        </List>
-      </Box>
+      {actionsHasItem && (
+        <Box bgcolor="#fff" border="1px solid #dadce0" borderRadius="8px">
+          <List>
+            {values.actions.map((item, index) => {
+              return (
+                <Box key={item.id}>
+                  <ListItem>
+                    <ListItemText>{item.text}</ListItemText>
+                    <ListItemSecondaryAction>
+                      <IconButton
+                        edge="end"
+                        aria-label="edit"
+                        onClick={(e) => clickEdit(e)}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                  {createDivider(index)}
+                </Box>
+              );
+            })}
+          </List>
+        </Box>
+      )}
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <Button variant="contained" onClick={() => setStep(step - 1)}>
           Back
