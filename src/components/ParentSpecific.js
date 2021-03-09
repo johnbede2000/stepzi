@@ -24,9 +24,13 @@ const ParentSpecific = () => {
     elObOne: '',
     elObTwo: '',
     actions: [
-      'development dummy really long and really long this might go over a line what will happen',
-      'development dummy two',
-      'dev dummy three',
+      {
+        id: 1,
+        text:
+          'development dummy really long and really long this might go over a line what will happen',
+      },
+      { id: 2, text: 'development dummy two' },
+      { id: 3, text: 'dev dummy three' },
     ],
   });
 
@@ -54,7 +58,7 @@ const ParentSpecific = () => {
       case 5:
         return <Elaborate {...reusedProps} />;
       case 6:
-        return <WhatNext {...reusedProps} />;
+        return <WhatNext {...reusedProps} setValues={setValues} />;
     }
   };
 

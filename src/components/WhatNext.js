@@ -22,8 +22,10 @@ import {
 import Alert from '@material-ui/lab/Alert';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
+import { v4 as uuidv4 } from 'uuid';
 
-const WhatNext = ({ values, handleChange, step, setStep }) => {
+const WhatNext = ({ values, setValues, step, setStep }) => {
+  const [newItem, setNewItem] = React.useState('');
   const [snackbar, Setsnackbar] = React.useState(false);
   const [formIsOpen, setFormIsOpen] = React.useState(false);
 
@@ -35,11 +37,30 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
     }
   };
 
+  const clickEdit = (e) => {
+    // open correct object here
+    // set value to the object.text
+    // delete from values (because will be added when click save)
+  };
+
+  const clickAdd = () => {
+    setFormIsOpen(true);
+  };
+
   const handleSave = () => {
-    console.log('saved');
+    const item = {};
+    item.id = uuidv4();
+    item.text = newItem;
+    const tempArray = values.actions;
+    tempArray.push(item);
+    setValues({ ...values, actions: tempArray });
+    setFormIsOpen(false);
+    setNewItem('');
   };
   const handleDelete = () => {
-    console.log('deleted');
+    // delete from array here
+    setFormIsOpen(false);
+    setNewItem('');
   };
   const createDivider = (index) => {
     if (index < values.actions.length - 1) {
@@ -59,7 +80,7 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
           color="primary"
           style={{ borderRadius: '20px' }}
           startIcon={<AddIcon />}
-          onClick={() => setFormIsOpen(true)}
+          onClick={() => clickAdd()}
         >
           Add a new task
         </Button>
@@ -82,6 +103,8 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
             label="Action"
             type="text"
             fullWidth
+            value={newItem}
+            onChange={(e) => setNewItem(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
@@ -98,17 +121,21 @@ const WhatNext = ({ values, handleChange, step, setStep }) => {
         <List>
           {values.actions.map((item, index) => {
             return (
-              <>
+              <Box key={item.id}>
                 <ListItem>
-                  <ListItemText>{item}</ListItemText>
+                  <ListItemText>{item.text}</ListItemText>
                   <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="edit">
+                    <IconButton
+                      edge="end"
+                      aria-label="edit"
+                      onClick={(e) => clickEdit(e)}
+                    >
                       <EditIcon />
                     </IconButton>
                   </ListItemSecondaryAction>
                 </ListItem>
                 {createDivider(index)}
-              </>
+              </Box>
             );
           })}
         </List>
