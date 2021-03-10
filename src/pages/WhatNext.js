@@ -100,6 +100,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
     renderList();
     setFormIsOpen(false);
     setNewItem('');
+    setEditId(null);
   };
 
   const createDivider = (index) => {
