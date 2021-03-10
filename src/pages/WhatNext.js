@@ -22,28 +22,27 @@ import {
 } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { v4 as uuidv4 } from 'uuid';
 
 const WhatNext = ({ values, setValues, step, setStep }) => {
-  const [newItem, setNewItem] = React.useState('');
-  const [snackbar, Setsnackbar] = React.useState(false);
+  const [dialogText, setDialogText] = React.useState('');
+  const [dialogId, setDialogId] = React.useState(null);
+  const [snackbarIsOpen, SetsnackbarIsOpen] = React.useState(false);
   const [formIsOpen, setFormIsOpen] = React.useState(false);
-  const [editId, setEditId] = React.useState(null);
 
-  const checkValues = () => {
+  const checkActionsLength = () => {
     if (values.actions.length < 1) {
-      Setsnackbar(true);
+      SetsnackbarIsOpen(true);
     } else {
       setStep(step + 1);
     }
   };
 
   const clickEdit = (id, text) => {
-    const tempArray = values.actions.filter((item) => item.id !== id); // instead of delete it, just modify it! So the edit form would need to load up its existing id not create a new one! see line 87
-    setValues({ ...values, actions: tempArray });
-    // open correct object
-    setNewItem(text);
+    setDialogText(text);
+    setDialogId(id);
     setFormIsOpen(true);
   };
 
@@ -61,11 +60,17 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
                     <ListItemText>{item.text}</ListItemText>
                     <ListItemSecondaryAction>
                       <IconButton
-                        edge="end"
                         aria-label="edit"
                         onClick={() => clickEdit(item.id, item.text)}
                       >
                         <EditIcon />
+                      </IconButton>
+                      <IconButton
+                        edge="end"
+                        aria-label="delete"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        <DeleteIcon />
                       </IconButton>
                     </ListItemSecondaryAction>
                   </ListItem>
@@ -80,27 +85,37 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
   };
 
   const clickAdd = () => {
+    setDialogText('');
+    setDialogId(null);
     setFormIsOpen(true);
   };
 
   const handleSave = () => {
-    const item = {};
-    item.id = editId || uuidv4();
-    item.text = newItem;
-    const tempArray = values.actions;
-    tempArray.push(item);
-    setValues({ ...values, actions: tempArray });
+    if (dialogId) {
+      const editedArr = values.actions.map((item) => {
+        // srt this out
+        if (item.id === dialogId) {
+          item.text = dialogText;
+        }
+      });
+      setValues({ ...values, actions: editedArr });
+    } else {
+      const newObj = { id: uuidv4(), text: dialogText };
+      const tempArray = values.actions;
+      tempArray.push(newObj);
+      setValues({ ...values, actions: tempArray });
+    }
     renderList();
     setFormIsOpen(false);
-    setNewItem('');
-    setEditId(null);
   };
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
+    const tempArray = values.actions.filter((item) => item.id !== id);
+    setValues({ ...values, actions: tempArray });
     renderList();
+  };
+  const handleClose = () => {
     setFormIsOpen(false);
-    setNewItem('');
-    setEditId(null);
   };
 
   const createDivider = (index) => {
@@ -133,6 +148,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
       </Box>
 
       {renderList()}
+
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <Button variant="contained" onClick={() => setStep(step - 1)}>
           Back
@@ -140,7 +156,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => checkValues()}
+          onClick={() => checkActionsLength()}
         >
           Next
         </Button>
@@ -163,13 +179,13 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
             label="Action"
             type="text"
             fullWidth
-            value={newItem}
-            onChange={(e) => setNewItem(e.target.value)}
+            value={dialogText}
+            onChange={(e) => setDialogText(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDelete} color="primary">
-            Delete
+          <Button onClick={handleClose} color="primary">
+            Cancel
           </Button>
           <Button onClick={handleSave} color="primary">
             Save
@@ -178,11 +194,11 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
       </Dialog>
 
       <Snackbar
-        open={snackbar}
+        open={snackbarIsOpen}
         autoHideDuration={3000}
-        onClose={() => Setsnackbar(false)}
+        onClose={() => SetsnackbarIsOpen(false)}
       >
-        <Alert onClose={() => Setsnackbar(false)} severity="error">
+        <Alert onClose={() => SetsnackbarIsOpen(false)} severity="error">
           Please add at least one action!
         </Alert>
       </Snackbar>
