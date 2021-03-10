@@ -38,10 +38,44 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
     }
   };
 
-  const clickEdit = (e) => {
-    // open correct object here
-    // set value to the object.text
-    // delete from values (because will be added when click save)
+  const clickEdit = (id, text) => {
+    const tempArray = values.actions.filter((item) => item.id !== id); // instead of delete it, just modify it! So the edit form would need to load up its existing id not create a new one! see line 87
+    setValues({ ...values, actions: tempArray });
+    // open correct object
+    setNewItem(text);
+    setFormIsOpen(true);
+  };
+
+  const renderList = () => {
+    if (values.actions.length === 0) {
+      return null;
+    } else {
+      return (
+        <Box bgcolor="#fff" border="1px solid #dadce0" borderRadius="8px">
+          <List>
+            {values.actions.map((item, index) => {
+              return (
+                <Box key={index}>
+                  <ListItem>
+                    <ListItemText>{item.text}</ListItemText>
+                    <ListItemSecondaryAction>
+                      <IconButton
+                        edge="end"
+                        aria-label="edit"
+                        onClick={() => clickEdit(item.id, item.text)}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                  {createDivider(index)}
+                </Box>
+              );
+            })}
+          </List>
+        </Box>
+      );
+    }
   };
 
   const clickAdd = () => {
@@ -50,31 +84,27 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
 
   const handleSave = () => {
     const item = {};
-    item.id = uuidv4();
+    item.id = uuidv4(); // or existing
     item.text = newItem;
     const tempArray = values.actions;
     tempArray.push(item);
     setValues({ ...values, actions: tempArray });
-    setActionsHasItem(true);
+    renderList();
     setFormIsOpen(false);
     setNewItem('');
   };
-  const handleDelete = () => {
-    // delete from array here
 
-    if (values.actions.length < 1) {
-      setActionsHasItem(false);
-    }
+  const handleDelete = () => {
+    renderList();
     setFormIsOpen(false);
     setNewItem('');
   };
+
   const createDivider = (index) => {
     if (index < values.actions.length - 1) {
       return <Divider />;
     }
   };
-
-  const [actionsHasItem, setActionsHasItem] = React.useState(false);
 
   return (
     <Vertical>
@@ -130,31 +160,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
         </DialogActions>
       </Dialog>
 
-      {actionsHasItem && (
-        <Box bgcolor="#fff" border="1px solid #dadce0" borderRadius="8px">
-          <List>
-            {values.actions.map((item, index) => {
-              return (
-                <Box key={item.id}>
-                  <ListItem>
-                    <ListItemText>{item.text}</ListItemText>
-                    <ListItemSecondaryAction>
-                      <IconButton
-                        edge="end"
-                        aria-label="edit"
-                        onClick={(e) => clickEdit(e)}
-                      >
-                        <EditIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                  {createDivider(index)}
-                </Box>
-              );
-            })}
-          </List>
-        </Box>
-      )}
+      {renderList()}
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <Button variant="contained" onClick={() => setStep(step - 1)}>
           Back
