@@ -29,6 +29,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
   const [newItem, setNewItem] = React.useState('');
   const [snackbar, Setsnackbar] = React.useState(false);
   const [formIsOpen, setFormIsOpen] = React.useState(false);
+  const [editId, setEditId] = React.useState(null);
 
   const checkValues = () => {
     if (values.actions.length < 1) {
@@ -84,7 +85,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
 
   const handleSave = () => {
     const item = {};
-    item.id = uuidv4(); // or existing
+    item.id = editId || uuidv4();
     item.text = newItem;
     const tempArray = values.actions;
     tempArray.push(item);
@@ -92,6 +93,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
     renderList();
     setFormIsOpen(false);
     setNewItem('');
+    setEditId(null);
   };
 
   const handleDelete = () => {
@@ -129,6 +131,20 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
         </Button>
       </Box>
 
+      {renderList()}
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
+        <Button variant="contained" onClick={() => setStep(step - 1)}>
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => checkValues()}
+        >
+          Next
+        </Button>
+      </Box>
+
       <Dialog
         open={formIsOpen}
         onClose={() => setFormIsOpen(false)}
@@ -160,19 +176,6 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
         </DialogActions>
       </Dialog>
 
-      {renderList()}
-      <Box display="flex" flexDirection="row" justifyContent="space-between">
-        <Button variant="contained" onClick={() => setStep(step - 1)}>
-          Back
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => checkValues()}
-        >
-          Next
-        </Button>
-      </Box>
       <Snackbar
         open={snackbar}
         autoHideDuration={3000}
