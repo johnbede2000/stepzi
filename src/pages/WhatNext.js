@@ -124,9 +124,9 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
       <Mycard>
         <Typography variant="body1">
           What do you need to do next? State the specific steps/actions you’ll
-          need to take to reach your goal. Be clear and precise. Clarity on
-          exactly what you’ll need to do and how often you’ll need to do it, to
-          make the goal happen.
+          need to take to reach your goal. Get clarity on exactly what you’ll
+          need to do and how often you’ll need to do it, to make the goal
+          happen.
         </Typography>
         <Info text="Doing so leaves no room for doubt about what you need to do/how often, or whether you’ve actually done it!" />
       </Mycard>
@@ -138,7 +138,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
           startIcon={<AddIcon />}
           onClick={() => clickAdd()}
         >
-          Add a new task
+          Add a new action
         </Button>
       </Box>
 
@@ -162,11 +162,9 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
         onClose={() => setFormIsOpen(false)}
         aria-labelledby="add-task"
       >
-        <DialogTitle id="add-task">Add/Edit</DialogTitle>
+        <DialogTitle id="add-task">Action step</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Put some handy tips here about adding actions.
-          </DialogContentText>
+          <DialogContentText>Be clear and precise.</DialogContentText>
           <TextField
             autoFocus
             margin="dense"
