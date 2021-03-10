@@ -92,13 +92,8 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
 
   const handleSave = () => {
     if (dialogId) {
-      const editedArr = values.actions.map((item) => {
-        // srt this out
-        if (item.id === dialogId) {
-          item.text = dialogText;
-        }
-      });
-      setValues({ ...values, actions: editedArr });
+      const objIndex = values.actions.findIndex((obj) => obj.id === dialogId);
+      values.actions[objIndex].text = dialogText;
     } else {
       const newObj = { id: uuidv4(), text: dialogText };
       const tempArray = values.actions;
