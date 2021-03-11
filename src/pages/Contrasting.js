@@ -55,10 +55,12 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
         </Typography>
         <Typography variant="body1">
           First imagine how you will feel attaining your goal, the future you
-          want; the positive aspects of reaching your goal. Next, think &amp;
-          get specific about the obstacles that stand in your way of getting
-          what you want. The hurdles you’ll need to overcome to get there e.g.
-          competition trying to achieve the same thing
+          want; the positive aspects of reaching your goal. Picture it as
+          vividly as you can in your mind, really think about the details, what
+          it will be like to experience it. Next, think &amp; get specific about
+          the obstacles that stand in your way of getting what you want. The
+          hurdles you’ll need to overcome to get there e.g. competition trying
+          to achieve the same thing
         </Typography>
         <Info text="This should kick your brain into gear - get the psychological wheels in motion - for the next page. It’s critical to experience the 'necessity to act'." />
       </Mycard>
@@ -128,6 +130,18 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
             onChange={(e) => handleChange(e)}
           />
         </Box>
+      </Mycard>
+      <Mycard>
+        <Typography variant="body1">
+          Beginning with the first positive aspect, write a few sentences about
+          what it will be like to experience it:
+        </Typography>
+      </Mycard>
+      <Mycard>
+        <Typography variant="body1">
+          Write a few sentences about the first obstacle, and why it's a
+          problem:
+        </Typography>
       </Mycard>
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <Button variant="contained" onClick={() => setStep(step - 1)}>
