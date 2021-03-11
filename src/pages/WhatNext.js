@@ -164,7 +164,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
       >
         <DialogTitle id="add-task">Action step</DialogTitle>
         <DialogContent>
-          <DialogContentText>Be clear and precise.</DialogContentText>
+          <DialogContentText>Be clear and precise!</DialogContentText>
           <TextField
             autoFocus
             margin="dense"
