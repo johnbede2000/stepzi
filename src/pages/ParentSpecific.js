@@ -60,9 +60,9 @@ const ParentSpecific = () => {
   const renderTitle = (step) => {
     if (step < 4) {
       return '1. Get Specific';
-    } else if (step > 3 && step < 6) {
+    } else if (step === 4) {
       return '2. Mental Contrasting';
-    } else if (step > 5) {
+    } else if (step > 4) {
       return '3. If-Then Planning';
     }
   };
