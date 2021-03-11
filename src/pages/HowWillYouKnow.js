@@ -25,8 +25,11 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
       </Mycard>
       <Mycard>
         <Typography variant="body1">
-          How will you know when you’ve succeeded? Describe the moment when you
-          know you will have reached your goal:
+          How will you know when you’ve succeeded? Describe the moment when you{' '}
+          <Box component="span" style={{ fontStyle: 'italic' }}>
+            know
+          </Box>{' '}
+          you will have reached your goal:
         </Typography>
         <Box>
           <TextField
