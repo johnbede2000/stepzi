@@ -49,12 +49,10 @@ const ParentSpecific = () => {
       case 4:
         return <TwoPos {...reusedProps} />;
       case 5:
-        return <TwoPos {...reusedProps} />;
-      case 6:
         return <WhatNext {...reusedProps} setValues={setValues} />;
-      case 7:
+      case 6:
         return <Ifthen {...reusedProps} />;
-      case 8:
+      case 7:
         return <End {...reusedProps} />;
     }
   };
@@ -65,7 +63,7 @@ const ParentSpecific = () => {
 
   return (
     <Vertical>
-      <LinearProgress variant="determinate" value={progressValue(8)} />
+      <LinearProgress variant="determinate" value={progressValue(7)} />
       {renderSwitch(step)}
     </Vertical>
   );

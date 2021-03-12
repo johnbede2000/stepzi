@@ -2,50 +2,10 @@ import React from 'react';
 import Vertical from '../components/Vertical';
 import { Typography, Box, Button, TextField } from '@material-ui/core';
 import custom from '../customStyle';
-import ErrSnackbar from '../components/ErrSnackbar';
 import Mycard from '../components/Mycard';
 import Info from '../components/Info';
 
 const TwoPos = ({ values, handleChange, step, setStep }) => {
-  const [validate, setValidate] = React.useState({
-    posOne: false,
-    posTwo: false,
-    obOne: false,
-    obTwo: false,
-  });
-
-  const [snackbar, setSnackbar] = React.useState(false);
-
-  const checkValues = () => {
-    if (!values.posOne) {
-      setValidate({ ...validate, posOne: true });
-      setSnackbar(true);
-      setTimeout(() => {
-        setValidate({ ...validate, posOne: false });
-      }, 3000);
-    } else if (!values.posTwo) {
-      setValidate({ ...validate, posTwo: true });
-      setSnackbar(true);
-      setTimeout(() => {
-        setValidate({ ...validate, posTwo: false });
-      }, 3000);
-    } else if (!values.obOne) {
-      setValidate({ ...validate, obOne: true });
-      setSnackbar(true);
-      setTimeout(() => {
-        setValidate({ ...validate, obOne: false });
-      }, 3000);
-    } else if (!values.obTwo) {
-      setValidate({ ...validate, obTwo: true });
-      setSnackbar(true);
-      setTimeout(() => {
-        setValidate({ ...validate, obTwo: false });
-      }, 3000);
-    } else {
-      setStep(step + 1);
-    }
-  };
-
   return (
     <Vertical>
       <Mycard>
@@ -77,7 +37,6 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
             id="posOne"
             label="Positive aspect 1"
             type="text"
-            error={validate.posOne}
             fullWidth={true}
             name="posOne"
             value={values.posOne}
@@ -91,7 +50,6 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
             id="obOne"
             label="Obstacle 1"
             type="text"
-            error={validate.obOne}
             fullWidth={true}
             name="obOne"
             value={values.obOne}
@@ -105,7 +63,6 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
             id="posTwo"
             label="Positive aspect 2"
             type="text"
-            error={validate.posTwo}
             fullWidth={true}
             name="posTwo"
             value={values.posTwo}
@@ -120,7 +77,6 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
             id="obTwo"
             label="Obstacle 2"
             type="text"
-            error={validate.obTwo}
             fullWidth={true}
             name="obTwo"
             value={values.obTwo}
@@ -149,12 +105,11 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => checkValues()}
+          onClick={() => setStep(step + 1)}
         >
           Next
         </Button>
       </Box>
-      <ErrSnackbar snackbar={snackbar} setSnackbar={setSnackbar} />
     </Vertical>
   );
 };
