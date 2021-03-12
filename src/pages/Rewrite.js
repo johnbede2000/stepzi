@@ -12,15 +12,28 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
       </Mycard>
       <Mycard>
         <Typography variant="body1">Your goal:</Typography>
-        <Typography variant="body1" style={custom().cursive}>
-          {values.goal || 'lose some weight'}
-        </Typography>
+        {values.goal ? (
+          <Typography variant="body1" style={custom().cursive}>
+            {values.goal}
+          </Typography>
+        ) : (
+          <Typography variant="body1" style={custom().example}>
+            learn conditional rendering
+          </Typography>
+        )}
         <Typography variant="body1">
           The moment you'll know you've reached your goal:
         </Typography>
-        <Typography variant="body1" style={custom().cursive}>
-          {values.moment || 'I can fit into my size-eight jeans'}
-        </Typography>
+        {values.moment ? (
+          <Typography variant="body1" style={custom().cursive}>
+            {values.moment}
+          </Typography>
+        ) : (
+          <Typography variant="body1" style={custom().example}>
+            I open up a web app I've built including at least one example of
+            conditional rendering
+          </Typography>
+        )}
       </Mycard>
       <Mycard>
         <Typography variant="body1">

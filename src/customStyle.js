@@ -8,6 +8,11 @@ const CustomStyle = () => {
       fontSize: '2em',
       color: theme.palette.primary.main,
     },
+    example: {
+      fontFamily: 'Caveat, cursive',
+      fontSize: '2em',
+      color: theme.palette.error.main,
+    },
   };
   return custom;
 };

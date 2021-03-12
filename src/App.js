@@ -7,7 +7,7 @@ import {
   Typography,
   Toolbar,
 } from '@material-ui/core';
-import ParentSpecific from './pages/ParentSpecific';
+import Parent from './pages/Parent';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -32,7 +32,7 @@ function App() {
         </AppBar>
         <Container maxWidth="sm">
           <Box py={4}>
-            <ParentSpecific />
+            <Parent />
           </Box>
         </Container>
       </ThemeProvider>

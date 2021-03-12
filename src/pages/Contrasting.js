@@ -25,9 +25,16 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
       </Mycard>
       <Mycard>
         <Typography variant="body1">Your goal:</Typography>
-        <Typography variant="body1" style={custom().cursive}>
-          {values.rewrite}
-        </Typography>
+        {values.rewrite ? (
+          <Typography variant="body1" style={custom().cursive}>
+            {values.rewrite}
+          </Typography>
+        ) : (
+          <Typography variant="body1" style={custom().example}>
+            Build and deploy a web app with at least one example of conditional
+            rendering
+          </Typography>
+        )}
         <Typography variant="body1">
           Think about two positive aspects of reaching the goal, and two
           obstacles that lie in the way.

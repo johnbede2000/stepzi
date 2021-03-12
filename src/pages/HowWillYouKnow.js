@@ -17,7 +17,11 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
 
   return (
     <Vertical>
-      <Snackbar open={snackbar} onClose={() => setSnackbar(false)}>
+      <Snackbar
+        open={snackbar}
+        onClose={() => setSnackbar(false)}
+        autoHideDuration="3000"
+      >
         <Alert onClose={() => setSnackbar(false)} severity="error">
           Example goal being used
         </Alert>
@@ -33,9 +37,15 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
       </Mycard>
       <Mycard>
         <Typography variant="body1">Your goal:</Typography>
-        <Typography style={custom().cursive} variant="body1">
-          {values.goal || 'lose some weight'}
-        </Typography>
+        {values.goal ? (
+          <Typography style={custom().cursive} variant="body1">
+            {values.goal}
+          </Typography>
+        ) : (
+          <Typography style={custom().example} variant="body1">
+            learn conditional rendering
+          </Typography>
+        )}
         <Typography variant="body1">
           How will you know when you’ve succeeded? Describe the moment when you{' '}
           <Box component="span" style={{ fontStyle: 'italic' }}>
@@ -65,23 +75,11 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
         <Button
           variant="contained"
           color="primary"
-          // onClick={() => {
-          //   if (!values.moment) {
-          //     setValidate(true);
-          //     setSnackbar(true);
-          //     setTimeout(() => {
-          //       setValidate(false);
-          //     }, 3000);
-          //   } else {
-          //     setStep(step + 1);
-          //   }
-          // }}
           onClick={() => setStep(step + 1)}
         >
           Next
         </Button>
       </Box>
-      {/* <ErrSnackbar snackbar={snackbar} setSnackbar={setSnackbar} /> */}
     </Vertical>
   );
 };

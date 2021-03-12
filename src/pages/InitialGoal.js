@@ -48,17 +48,6 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
         <Button
           variant="contained"
           color="primary"
-          // onClick={() => {
-          //   if (!values.goal) {
-          //     setValidate(true);
-          //     setSnackbar(true);
-          //     setTimeout(() => {
-          //       setValidate(false);
-          //     }, 3000);
-          //   } else {
-          //     setStep(step + 1);
-          //   }
-          // }}
           onClick={() => setStep(step + 1)}
         >
           Next
