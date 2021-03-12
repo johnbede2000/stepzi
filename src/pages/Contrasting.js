@@ -49,20 +49,19 @@ const TwoPos = ({ values, handleChange, step, setStep }) => {
   return (
     <Vertical>
       <Mycard>
+        <Typography variant="h4">Mental Contrasting</Typography>
         <Typography variant="body1">
-          Now it's time to go back and forth thinking about the success you want
-          to achieve, and the obstacles that stand in your way.
+          Now it's time to go back and forth, thinking about the success you
+          want to achieve, and the obstacles that stand in your way.
         </Typography>
         <Typography variant="body1">
-          First imagine how you will feel attaining your goal, the future you
-          want; the positive aspects of reaching your goal. Picture it as
-          vividly as you can in your mind, really think about the details, what
-          it will be like to experience it. Next, think &amp; get specific about
-          the obstacles that stand in your way of getting what you want. The
-          hurdles you’ll need to overcome to get there e.g. competition trying
-          to achieve the same thing
+          First imagine how you will feel attaining your goal. Picture it as
+          vividly as you can in your mind, really think about the details. Next,
+          think &amp; get specific about the obstacles that stand in your way of
+          getting what you want.
         </Typography>
-        <Info text="This should kick your brain into gear - get the psychological wheels in motion - for the next page. It’s critical to experience the 'necessity to act'." />
+
+        <Info text="This should kick your brain into gear for the next page, bringing attention & clarity to what you will need to do to make the goal happen." />
       </Mycard>
       <Mycard>
         <Typography variant="body1">Your goal:</Typography>

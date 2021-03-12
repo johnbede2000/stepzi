@@ -11,9 +11,16 @@ const Ifthen = ({ setStep, step }) => {
   return (
     <Vertical>
       <Mycard>
+        <Typography variant="h4">Planning</Typography>
+      </Mycard>
+      <Mycard>
         <Typography variant="body1">
           Decide when and where you will take each action you want to take, in
-          advance.
+          advance.{' '}
+          <Box component="span" style={{ fontStyle: 'italic' }}>
+            If-then
+          </Box>{' '}
+          plans take the form: if <b>X</b> happens I will do <b>Y</b>.
         </Typography>
       </Mycard>
       <Box display="flex" flexDirection="row" justifyContent="space-between">

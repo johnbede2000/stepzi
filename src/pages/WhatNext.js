@@ -122,13 +122,15 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
   return (
     <Vertical>
       <Mycard>
+        <Typography variant="h4">Planning</Typography>
+      </Mycard>
+      <Mycard>
         <Typography variant="body1">
-          What do you need to do next? State the specific steps/actions you’ll
-          need to take to reach your goal. Get clarity on exactly what you’ll
-          need to do and how often you’ll need to do it, to make the goal
-          happen.
+          What do you need to do next? State the specific actions you’ll need to
+          take to reach your goal; be clear and precise. Get clarity on exactly
+          what you’ll need to do and how often you’ll need to do it.
         </Typography>
-        <Info text="Doing so leaves no room for doubt about what you need to do/how often, or whether you’ve actually done it!" />
+        <Info text="Doing so leaves no room for doubt about what you need to do, and whether you’ve actually done it!" />
       </Mycard>
       <Box display="flex" justifyContent="center">
         <Button

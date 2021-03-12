@@ -1,18 +1,18 @@
 import React from 'react';
 import InitialGoal from './InitialGoal';
 import HowWillYouKnow from './HowWillYouKnow';
-import Rewrite from './Rewrite';
 import TwoPos from './Contrasting';
 import WhatNext from './WhatNext';
-import { LinearProgress, Typography } from '@material-ui/core';
+import { LinearProgress } from '@material-ui/core';
 import Vertical from '../components/Vertical';
-import Mycard from '../components/Mycard';
 import Ifthen from './Ifthen';
 import End from './End';
+import Rewrite from './Rewrite';
 
 const ParentSpecific = () => {
-  const [step, setStep] = React.useState(1);
+  const [step, setStep] = React.useState(6);
   const [values, setValues] = React.useState({
+    // split these into separate and only pass to specific page needed?
     goal: '',
     moment: '',
     rewrite: '',
@@ -49,21 +49,13 @@ const ParentSpecific = () => {
       case 4:
         return <TwoPos {...reusedProps} />;
       case 5:
-        return <WhatNext {...reusedProps} setValues={setValues} />;
+        return <TwoPos {...reusedProps} />;
       case 6:
-        return <Ifthen {...reusedProps} />;
+        return <WhatNext {...reusedProps} setValues={setValues} />;
       case 7:
+        return <Ifthen {...reusedProps} />;
+      case 8:
         return <End {...reusedProps} />;
-    }
-  };
-
-  const renderTitle = (step) => {
-    if (step < 4) {
-      return '1. Get Specific';
-    } else if (step === 4) {
-      return '2. Mental Contrasting';
-    } else if (step > 4) {
-      return '3. If-Then Planning';
     }
   };
 
@@ -73,10 +65,7 @@ const ParentSpecific = () => {
 
   return (
     <Vertical>
-      <LinearProgress variant="determinate" value={progressValue(7)} />
-      <Mycard>
-        <Typography variant="h4">{renderTitle(step)}</Typography>
-      </Mycard>
+      <LinearProgress variant="determinate" value={progressValue(8)} />
       {renderSwitch(step)}
     </Vertical>
   );

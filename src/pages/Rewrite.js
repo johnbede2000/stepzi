@@ -2,24 +2,24 @@ import React from 'react';
 import { Box, Button, TextField, Typography } from '@material-ui/core';
 import custom from '../customStyle';
 import Vertical from '../components/Vertical';
-import ErrSnackbar from '../components/ErrSnackbar';
 import Mycard from '../components/Mycard';
 
 const Rewrite = ({ values, handleChange, step, setStep }) => {
-  const [validate, setValidate] = React.useState(false);
-  const [snackbar, setSnackbar] = React.useState(false);
   return (
     <Vertical>
       <Mycard>
+        <Typography variant="h4">Get Specific</Typography>
+      </Mycard>
+      <Mycard>
         <Typography variant="body1">Your goal:</Typography>
         <Typography variant="body1" style={custom().cursive}>
-          {values.goal}
+          {values.goal || 'lose some weight'}
         </Typography>
         <Typography variant="body1">
           The moment you'll know you've reached your goal:
         </Typography>
         <Typography variant="body1" style={custom().cursive}>
-          {values.moment}
+          {values.moment || 'I can fit into my size-eight jeans'}
         </Typography>
       </Mycard>
       <Mycard>
@@ -31,7 +31,6 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
             id="rewrite"
             label="My improved goal"
             type="text"
-            error={validate}
             fullWidth={true}
             name="rewrite"
             value={values.rewrite}
@@ -49,22 +48,11 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => {
-            if (!values.rewrite) {
-              setValidate(true);
-              setSnackbar(true);
-              setTimeout(() => {
-                setValidate(false);
-              }, 3000);
-            } else {
-              setStep(step + 1);
-            }
-          }}
+          onClick={() => setStep(step + 1)}
         >
           Next
         </Button>
       </Box>
-      <ErrSnackbar snackbar={snackbar} setSnackbar={setSnackbar} />
     </Vertical>
   );
 };

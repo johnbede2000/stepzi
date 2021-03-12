@@ -1,15 +1,33 @@
 import React from 'react';
 import { Typography, TextField, Box, Button } from '@material-ui/core';
 import Vertical from '../components/Vertical';
-import ErrSnackbar from '../components/ErrSnackbar';
 import Mycard from '../components/Mycard';
+import Info from '../components/Info';
 
 const InitialGoal = ({ values, handleChange, setStep, step }) => {
-  const [validate, setValidate] = React.useState(false);
-  const [snackbar, setSnackbar] = React.useState(false);
-
   return (
     <Vertical>
+      <Mycard>
+        <Typography variant="h4">Introduction</Typography>
+        <Typography variant="body1">
+          Stepzi is a web app to help you choose and take the next action on a
+          goal. It will guide you through best practices according to decades of
+          research by scientific pysochologists who study motivation.
+        </Typography>
+      </Mycard>
+      <Mycard>
+        <Typography variant="body1">
+          Choose a goal that's about getting better (developing ability, and
+          learning to master a new skill), rather than being good (proving you
+          have a lot of ability and already know what you're doing).
+        </Typography>
+        <Info text="This will help you take difficulty in stride, and enjoy the journey." />
+        <Typography variant="body1">
+          Choose a goal that focuses on what you will do, not what you won't do;
+          if you want to stop something, then choose a goal that answers what
+          you'll do instead.
+        </Typography>
+      </Mycard>
       <Mycard>
         <Typography variant="body1">Write down your goal:</Typography>
         <Box>
@@ -17,7 +35,6 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
             id="goal"
             label="My Goal"
             type="text"
-            error={validate}
             fullWidth={true}
             name="goal"
             value={values.goal}
@@ -31,22 +48,22 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => {
-            if (!values.goal) {
-              setValidate(true);
-              setSnackbar(true);
-              setTimeout(() => {
-                setValidate(false);
-              }, 3000);
-            } else {
-              setStep(step + 1);
-            }
-          }}
+          // onClick={() => {
+          //   if (!values.goal) {
+          //     setValidate(true);
+          //     setSnackbar(true);
+          //     setTimeout(() => {
+          //       setValidate(false);
+          //     }, 3000);
+          //   } else {
+          //     setStep(step + 1);
+          //   }
+          // }}
+          onClick={() => setStep(step + 1)}
         >
           Next
         </Button>
       </Box>
-      <ErrSnackbar snackbar={snackbar} setSnackbar={setSnackbar} />
     </Vertical>
   );
 };
