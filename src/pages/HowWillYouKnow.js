@@ -20,11 +20,9 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
       <Snackbar
         open={snackbar}
         onClose={() => setSnackbar(false)}
-        autoHideDuration="3000"
+        autoHideDuration="4000"
       >
-        <Alert onClose={() => setSnackbar(false)} severity="error">
-          Example goal being used
-        </Alert>
+        <Alert severity="error">Example goal being used</Alert>
       </Snackbar>
       <Mycard>
         <Typography variant="h4">Get Specific</Typography>
