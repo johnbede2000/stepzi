@@ -2,17 +2,18 @@ import React from 'react';
 import Vertical from '../components/Vertical';
 import Mycard from '../components/Mycard';
 import Info from '../components/Info';
+import Alert from '@material-ui/lab/Alert';
 import {
   Typography,
   Box,
   Button,
-  Snackbar,
   List,
   ListItem,
   ListItemSecondaryAction,
   IconButton,
   ListItemText,
   Divider,
+  Snackbar,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -20,7 +21,7 @@ import {
   TextField,
   DialogActions,
 } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
@@ -31,9 +32,13 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
   const [dialogId, setDialogId] = React.useState(null);
   const [snackbarIsOpen, SetsnackbarIsOpen] = React.useState(false);
   const [formIsOpen, setFormIsOpen] = React.useState(false);
+  const [errMsg, setErrMsg] = React.useState('');
+  const [severity, setSeverity] = React.useState('');
 
   const checkActionsLength = () => {
     if (values.actions.length < 1) {
+      setErrMsg('Please add at least one action');
+      setSeverity('error');
       SetsnackbarIsOpen(true);
     } else {
       setStep(step + 1);
@@ -91,7 +96,12 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
   };
 
   const handleSave = () => {
-    if (dialogId) {
+    if (!dialogText || /^\s*$/.test(dialogText)) {
+      handleClose();
+      setErrMsg('Empty input not saved');
+      setSeverity('warning');
+      SetsnackbarIsOpen(true);
+    } else if (dialogId) {
       const objIndex = values.actions.findIndex((obj) => obj.id === dialogId);
       values.actions[objIndex].text = dialogText;
     } else {
@@ -187,15 +197,12 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
           </Button>
         </DialogActions>
       </Dialog>
-
       <Snackbar
         open={snackbarIsOpen}
-        autoHideDuration={3000}
+        autoHideDuration={4000}
         onClose={() => SetsnackbarIsOpen(false)}
       >
-        <Alert onClose={() => SetsnackbarIsOpen(false)} severity="error">
-          Please add at least one action!
-        </Alert>
+        <Alert severity={severity}>{errMsg}</Alert>
       </Snackbar>
     </Vertical>
   );
