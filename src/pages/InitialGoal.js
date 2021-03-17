@@ -11,8 +11,8 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
         <Typography variant="h4">Introduction</Typography>
         <Typography variant="body1">
           Stepzi is a web app to help you choose and take the next action on a
-          goal. It will guide you through best practices according to decades of
-          research by scientific pysochologists who study motivation.
+          goal. It will guide you through best practices according to scientific
+          research.
         </Typography>
       </Mycard>
       <Mycard>
@@ -30,19 +30,18 @@ const InitialGoal = ({ values, handleChange, setStep, step }) => {
       </Mycard>
       <Mycard>
         <Typography variant="body1">Write down your goal:</Typography>
-        <Box>
-          <TextField
-            id="goal"
-            label="My Goal"
-            type="text"
-            fullWidth={true}
-            name="goal"
-            value={values.goal}
-            multiline={true}
-            variant="outlined"
-            onChange={(e) => handleChange(e)}
-          />
-        </Box>
+
+        <TextField
+          id="goal"
+          label="My Goal"
+          type="text"
+          fullWidth={true}
+          name="goal"
+          value={values.goal}
+          multiline={true}
+          variant="outlined"
+          onChange={(e) => handleChange(e)}
+        />
       </Mycard>
       <Box display="flex" flexDirection="row" justifyContent="flex-end">
         <Button

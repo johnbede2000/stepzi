@@ -10,20 +10,16 @@ import End from './End';
 import Rewrite from './Rewrite';
 
 const ParentSpecific = () => {
-  const [step, setStep] = React.useState(6);
+  const [step, setStep] = React.useState(1);
   const [values, setValues] = React.useState({
     // split these into separate and only pass to specific page needed?
     goal: '',
     moment: '',
     rewrite: '',
-    posOne: '',
-    posTwo: '',
-    obOne: '',
-    obTwo: '',
-    elPosOne: '',
-    elPosTwo: '',
-    elObOne: '',
-    elObTwo: '',
+    constrastOne: '',
+    contrastTwo: '',
+    contrastThree: '',
+    contrastFour: '',
     actions: [],
   });
 

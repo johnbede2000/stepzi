@@ -30,8 +30,8 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
           </Typography>
         ) : (
           <Typography variant="body1" style={custom().example}>
-            I open up a web app I've built including at least one example of
-            conditional rendering
+            I open up a web app I've built including at least one working
+            example of conditional rendering
           </Typography>
         )}
       </Mycard>
@@ -39,19 +39,17 @@ const Rewrite = ({ values, handleChange, step, setStep }) => {
         <Typography variant="body1">
           Now rewrite the goal using the information:
         </Typography>
-        <Box>
-          <TextField
-            id="rewrite"
-            label="My improved goal"
-            type="text"
-            fullWidth={true}
-            name="rewrite"
-            value={values.rewrite}
-            multiline={true}
-            variant="outlined"
-            onChange={(e) => handleChange(e)}
-          />
-        </Box>
+        <TextField
+          id="rewrite"
+          label="My improved goal"
+          type="text"
+          fullWidth={true}
+          name="rewrite"
+          value={values.rewrite}
+          multiline={true}
+          variant="outlined"
+          onChange={(e) => handleChange(e)}
+        />
       </Mycard>
 
       <Box display="flex" flexDirection="row" justifyContent="space-between">

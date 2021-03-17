@@ -51,19 +51,17 @@ const HowWillYouKnow = ({ values, handleChange, setStep, step }) => {
           </Box>{' '}
           you will have reached your goal:
         </Typography>
-        <Box>
-          <TextField
-            id="moment"
-            label="The Moment"
-            type="text"
-            name="moment"
-            fullWidth={true}
-            value={values.moment}
-            multiline={true}
-            variant="outlined"
-            onChange={(e) => handleChange(e)}
-          />
-        </Box>
+        <TextField
+          id="moment"
+          label="The Moment"
+          type="text"
+          name="moment"
+          fullWidth={true}
+          value={values.moment}
+          multiline={true}
+          variant="outlined"
+          onChange={(e) => handleChange(e)}
+        />
       </Mycard>
 
       <Box display="flex" flexDirection="row" justifyContent="space-between">
