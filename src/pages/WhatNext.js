@@ -26,8 +26,21 @@ import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { v4 as uuidv4 } from 'uuid';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  addButton: {
+    backgroundColor: '#4caf50',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: '#388e3c',
+    },
+  },
+});
 
 const WhatNext = ({ values, setValues, step, setStep }) => {
+  const classes = useStyles();
+
   const [dialogText, setDialogText] = React.useState('');
   const [dialogId, setDialogId] = React.useState(null);
   const [snackbarIsOpen, SetsnackbarIsOpen] = React.useState(false);
@@ -145,7 +158,7 @@ const WhatNext = ({ values, setValues, step, setStep }) => {
       <Box display="flex" justifyContent="center">
         <Button
           variant="contained"
-          color="primary"
+          className={classes.addButton}
           style={{ borderRadius: '20px' }}
           startIcon={<AddIcon />}
           onClick={() => clickAdd()}
